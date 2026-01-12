@@ -1,104 +1,159 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Send, MapPin, Phone, Mail } from "lucide-react";
+import { motion, useMotionTemplate, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { Send, MapPin, Phone, Mail, ArrowUpRight, Sparkles } from "lucide-react";
+import React, { useRef, useState } from 'react';
 
 export function Contact() {
   return (
-    <section className="py-24 bg-primary text-white relative">
-        <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-white/5 to-transparent pointer-events-none" />
+    <section className="min-h-screen py-16 bg-[#020406] text-white relative flex items-center justify-center overflow-hidden" id="contact">
+        {/* Animated Gradient Background */}
+        <div className="absolute inset-0 bg-[#020406]">
+            <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-[#2c4a3b]/20 rounded-full blur-[120px] animate-pulse" />
+            <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-[#34d399]/10 rounded-full blur-[120px] animate-pulse delay-1000" />
+            <div className="absolute top-[20%] right-[20%] w-[20%] h-[20%] bg-[#d4af37]/10 rounded-full blur-[80px] animate-bounce duration-[10000ms]" />
+        </div>
         
-      <div className="container mx-auto px-6">
-        <div className="flex flex-col lg:flex-row gap-16">
-            
-            {/* Contact Info */}
-            <div className="w-full lg:w-1/3">
-                <span className="text-secondary font-bold uppercase tracking-[0.2em] text-xs block mb-6">
-                    Get in Touch
-                </span>
-                <h2 className="text-4xl font-serif font-bold mb-8">
-                    Start Your Wellness Journey
-                </h2>
-                <p className="text-primary-foreground/70 mb-12 leading-relaxed">
-                    Have questions about our products or need a custom quote for bulk orders? We are here to help.
-                </p>
+        {/* Subtle Grid Pattern */}
+        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none"></div>
+        <div className="absolute inset-0 opacity-[0.03]" 
+             style={{ 
+                 backgroundImage: `linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(to right, #ffffff 1px, transparent 1px)`, 
+                 backgroundSize: '40px 40px' 
+             }} 
+        />
 
-                <div className="space-y-8">
-                    <div className="flex items-start gap-4">
-                        <div className="bg-white/10 p-3 rounded-full">
-                            <MapPin className="text-secondary" size={20} />
-                        </div>
+        <div className="container mx-auto px-6 relative z-10 perspective-1000">
+            <TiltCard>
+                <div className="grid grid-cols-1 lg:grid-cols-5 h-full">
+                    {/* Brand Side (Left) */}
+                    <div className="lg:col-span-2 bg-[#0a1f1c]/80 p-10 lg:p-14 flex flex-col justify-between relative overflow-hidden border-b lg:border-b-0 lg:border-r border-white/5">
+                        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-white/5 to-transparent pointer-events-none" />
+                        
                         <div>
-                            <h4 className="font-bold text-lg mb-1">Visit Us</h4>
-                            <p className="text-primary-foreground/60 text-sm">
-                                123 Business Park, Industrial Area<br/>
-                                Gujarat, India 380001
+                            <div className="flex items-center gap-2 mb-8 text-[#34d399]">
+                                <Sparkles size={20} />
+                                <span className="text-xs font-bold tracking-[0.3em] uppercase">Premium</span>
+                            </div>
+                            <h2 className="text-4xl lg:text-5xl font-serif font-medium leading-tight mb-6">
+                                Crystal Clear <br/> <span className="text-white/50 italic">Connection.</span>
+                            </h2>
+                            <p className="text-white/60 text-sm leading-relaxed max-w-xs">
+                                Experience the purity of our Menthol crystals. Reach out for bulk inquiries or custom formulations.
                             </p>
+                        </div>
+
+                        <div className="space-y-8 mt-12">
+                            <ContactRow icon={MapPin} text="Gujarat, India" />
+                            <ContactRow icon={Mail} text="info@sohamenterprise.com" />
+                            <ContactRow icon={Phone} text="+91 98765 43210" />
                         </div>
                     </div>
 
-                    <div className="flex items-start gap-4">
-                        <div className="bg-white/10 p-3 rounded-full">
-                            <Mail className="text-secondary" size={20} />
-                        </div>
-                        <div>
-                            <h4 className="font-bold text-lg mb-1">Email Us</h4>
-                            <p className="text-primary-foreground/60 text-sm">
-                                info@sohamenterprise.com<br/>
-                                sales@sohamenterprise.com
-                            </p>
-                        </div>
-                    </div>
+                    {/* Form Side (Right) */}
+                    <div className="lg:col-span-3 bg-white/5 p-10 lg:p-14 relative backdrop-blur-xl">
+                        <form className="space-y-8">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <CrystalInput label="First Name" />
+                                <CrystalInput label="Last Name" />
+                            </div>
+                            <CrystalInput label="Email Address" type="email" />
+                            <div className="space-y-2">
+                                <label className="text-xs uppercase font-bold text-white/40 tracking-widest pl-1">Message</label>
+                                <textarea 
+                                    className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-[#34d399]/50 focus:bg-white/10 transition-all resize-none min-h-[120px]"
+                                />
+                            </div>
 
-                    <div className="flex items-start gap-4">
-                        <div className="bg-white/10 p-3 rounded-full">
-                            <Phone className="text-secondary" size={20} />
-                        </div>
-                        <div>
-                            <h4 className="font-bold text-lg mb-1">Call Us</h4>
-                            <p className="text-primary-foreground/60 text-sm">
-                                +91 98765 43210<br/>
-                                Mon - Sat, 9am - 6pm
-                            </p>
-                        </div>
+                            <button className="w-full bg-gradient-to-r from-[#34d399] to-[#2c4a3b] text-white py-4 rounded-xl font-bold tracking-widest uppercase hover:opacity-90 transition-opacity shadow-lg shadow-[#34d399]/20 flex items-center justify-center gap-3 group">
+                                Send Message
+                                <ArrowUpRight size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                            </button>
+                        </form>
                     </div>
                 </div>
-            </div>
-
-            {/* Contact Form */}
-            <div className="w-full lg:w-2/3 lg:pl-12">
-                <motion.form 
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="bg-white p-8 lg:p-12 shadow-2xl"
-                >
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                        <div className="space-y-2">
-                             <label className="text-xs uppercase font-bold text-primary tracking-widest">Name</label>
-                             <input type="text" className="w-full border-b border-gray-300 py-3 focus:outline-none focus:border-secondary transition-colors text-black" placeholder="John Doe" />
-                        </div>
-                        <div className="space-y-2">
-                             <label className="text-xs uppercase font-bold text-primary tracking-widest">Email</label>
-                             <input type="email" className="w-full border-b border-gray-300 py-3 focus:outline-none focus:border-secondary transition-colors text-black" placeholder="john@example.com" />
-                        </div>
-                    </div>
-                    <div className="space-y-2 mb-8">
-                         <label className="text-xs uppercase font-bold text-primary tracking-widest">Subject</label>
-                         <input type="text" className="w-full border-b border-gray-300 py-3 focus:outline-none focus:border-secondary transition-colors text-black" placeholder="Inquiry about Menthol Crystals" />
-                    </div>
-                     <div className="space-y-2 mb-12">
-                         <label className="text-xs uppercase font-bold text-primary tracking-widest">Message</label>
-                         <textarea className="w-full border-b border-gray-300 py-3 focus:outline-none focus:border-secondary transition-colors min-h-[100px] text-black" placeholder="How can we help you?" />
-                    </div>
-
-                    <button className="w-full bg-primary text-white py-4 font-bold tracking-widest uppercase hover:bg-primary/90 transition-all flex items-center justify-center gap-3">
-                        Send Message <Send size={16} />
-                    </button>
-                </motion.form>
-            </div>
+            </TiltCard>
         </div>
-      </div>
     </section>
   );
+}
+
+function contactRow({ icon: Icon, text }: { icon: any, text: string }) {
+    return (
+        <div className="flex items-center gap-4 text-white/80 group cursor-default">
+            <div className="p-2 border border-white/10 rounded-lg group-hover:border-[#34d399]/50 group-hover:bg-[#34d399]/10 transition-colors">
+                <Icon size={16} />
+            </div>
+            <span className="text-sm tracking-wide font-light">{text}</span>
+        </div>
+    );
+}
+
+// Capitalize helper component name for consistency
+const ContactRow = contactRow;
+
+function CrystalInput({ label, type = "text" }: { label: string, type?: string }) {
+    return (
+        <div className="space-y-2 group">
+            <label className="text-xs uppercase font-bold text-white/40 tracking-widest pl-1 group-focus-within:text-[#34d399] transition-colors">{label}</label>
+            <input 
+                type={type} 
+                className="w-full bg-white/5 border border-white/10 rounded-xl py-3 px-4 text-white focus:outline-none focus:border-[#34d399]/50 focus:bg-white/10 transition-all"
+            />
+        </div>
+    );
+}
+
+function TiltCard({ children }: { children: React.ReactNode }) {
+    const ref = useRef<HTMLDivElement>(null);
+
+    const x = useMotionValue(0);
+    const y = useMotionValue(0);
+
+    const mouseXSpring = useSpring(x);
+    const mouseYSpring = useSpring(y);
+
+    const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["7deg", "-7deg"]);
+    const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-7deg", "7deg"]);
+
+    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+        if (!ref.current) return;
+
+        const rect = ref.current.getBoundingClientRect();
+
+        const width = rect.width;
+        const height = rect.height;
+
+        const mouseX = e.clientX - rect.left;
+        const mouseY = e.clientY - rect.top;
+
+        const xPct = mouseX / width - 0.5;
+        const yPct = mouseY / height - 0.5;
+
+        x.set(xPct);
+        y.set(yPct);
+    };
+
+    const handleMouseLeave = () => {
+        x.set(0);
+        y.set(0);
+    };
+
+    return (
+        <motion.div
+            ref={ref}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+            style={{
+                rotateX,
+                rotateY,
+                transformStyle: "preserve-3d",
+            }}
+            className="rounded-3xl overflow-hidden border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] bg-[#050505]/50 backdrop-blur-md"
+        >
+            <div style={{ transform: "translateZ(50px)" }}>
+                {children}
+            </div>
+        </motion.div>
+    );
 }
