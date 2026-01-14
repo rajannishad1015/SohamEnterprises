@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, SlidersHorizontal, ArrowUpRight, Leaf, Sparkles, AlertCircle } from "lucide-react";
+import { Search, SlidersHorizontal, ArrowUpRight, Leaf, Sparkles, AlertCircle, ChevronLeft, ChevronRight } from "lucide-react";
 import { products, Product } from "@/lib/products";
 import { ProductModal } from "@/components/ui/ProductModal";
 import { useCart } from "@/context/CartContext";
@@ -34,7 +34,7 @@ const ProductImage = ({ product }: { product: Product }) => {
           transition={{ duration: 0.7, ease: "easeOut" }}
           src={product.image}
           alt={product.name || 'Product Image'}
-          className="object-cover w-full h-full"
+          className="object-contain w-full h-full mix-blend-multiply"
           onError={() => setImageError(true)}
         />
       ) : (
@@ -115,29 +115,31 @@ const ProductCard = ({ product, onClick }: { product: Product; onClick: (product
       layout
       variants={itemVariants}
       onClick={() => onClick(product)}
-      className="bg-white p-6 group hover:z-10 hover:shadow-2xl transition-all duration-300 ease-out relative cursor-pointer flex flex-col h-full rounded-xl border border-transparent hover:border-stone-100"
+      className="bg-white p-3 md:p-6 group hover:z-10 hover:shadow-2xl transition-all duration-300 ease-out relative cursor-pointer flex flex-col h-full min-h-[340px] rounded-xl border border-stone-200 hover:border-primary/40"
     >
-      <div className="mb-6 w-full max-w-[180px] mx-auto relative">
-         <ProductImage product={product} />
+      <div className="mb-4 w-full aspect-square relative flex items-center justify-center bg-stone-50 rounded-lg overflow-hidden border border-stone-100">
+         <div className="w-full h-full p-4 flex items-center justify-center">
+            <ProductImage product={product} />
+         </div>
       </div>
 
-      <div className="flex-grow flex flex-col items-center text-center">
-        <h3 className="text-lg font-serif text-primary mb-2 group-hover:text-secondary transition-colors duration-300 line-clamp-2">
+      <div className="flex-grow flex flex-col items-center text-center w-full">
+        <h3 className="text-sm md:text-lg font-serif text-primary mb-1 md:mb-2 group-hover:text-secondary transition-colors duration-300 line-clamp-2 min-h-[2.5em] md:min-h-[3.5em] leading-tight flex items-end justify-center">
           {product.name || "Unknown Product"}
         </h3>
-        <div className="h-px w-8 bg-stone-300 mb-4 group-hover:w-16 group-hover:bg-secondary transition-all duration-300" />
+        <div className="h-px w-8 bg-stone-300 mb-2 md:mb-4 group-hover:w-16 group-hover:bg-secondary transition-all duration-300 opacity-50" />
 
         <div className="mt-auto w-full">
-          <p className="text-xs text-stone-400 uppercase tracking-widest mb-1">
-            Wholesale Rate
+          <p className="text-[10px] md:text-xs text-stone-400 uppercase tracking-widest mb-0.5 md:mb-1">
+            Wholesale
           </p>
-          <p className="font-mono text-xl font-bold text-primary mb-4">
+          <p className="font-mono text-sm md:text-xl font-bold text-primary mb-2 md:mb-4">
             ₹{product.rate || "N/A"}
           </p>
 
           <button
             onClick={handleAddToCart}
-            className={`w-full py-3 px-2 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wide transition-all flex items-center justify-center gap-1.5 whitespace-nowrap ${
+            className={`w-full py-2 md:py-3 px-2 rounded-lg md:rounded-xl text-[10px] md:text-sm font-bold uppercase tracking-wide transition-all flex items-center justify-center gap-1.5 whitespace-nowrap overflow-hidden ${
               isAdded
                 ? "bg-green-500 text-white shadow-green-200"
                 : "bg-primary text-white hover:bg-secondary hover:shadow-lg shadow-stone-200"
@@ -145,11 +147,11 @@ const ProductCard = ({ product, onClick }: { product: Product; onClick: (product
           >
             {isAdded ? (
               <>
-                <Check size={16} /> Added
+                <Check size={14} className="md:w-4 md:h-4" /> <span className="truncate">Added</span>
               </>
             ) : (
               <>
-                <ShoppingBag size={16} /> Add to Cart
+                <ShoppingBag size={14} className="md:w-4 md:h-4" /> <span className="truncate">Add to Cart</span>
               </>
             )}
           </button>
@@ -170,6 +172,18 @@ export function ProductGrid() {
   const handleProductClick = (product: Product) => {
     setSelectedProduct(product);
     setIsModalOpen(true);
+  };
+
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = 300;
+      scrollContainerRef.current.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth'
+      });
+    }
   };
   
   // Extract unique categories (mock or real)
@@ -343,30 +357,96 @@ export function ProductGrid() {
                 transition={{ delay: 0.8 }}
                 className="mt-16 mb-12"
             >
-                 <div className="flex items-center gap-4 mb-8">
-                    <h2 className="text-2xl font-serif text-primary">Featured Selection</h2>
-                    <div className="h-px bg-stone-200 flex-grow" />
+                 <div className="flex items-center gap-4 mb-4 md:mb-8 justify-between">
+                    <div className="flex items-center gap-4 flex-grow">
+                        <h2 className="text-xl md:text-2xl font-serif text-primary whitespace-nowrap">Featured Selection</h2>
+                        <div className="h-px bg-stone-200 flex-grow" />
+                    </div>
+                    <div className="flex gap-2">
+                        <button 
+                            onClick={() => scroll('left')}
+                            className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-stone-200 flex items-center justify-center text-stone-500 hover:bg-primary hover:text-white hover:border-primary transition-all"
+                        >
+                            <ChevronLeft size={18} />
+                        </button>
+                        <button 
+                            onClick={() => scroll('right')}
+                            className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-stone-200 flex items-center justify-center text-stone-500 hover:bg-primary hover:text-white hover:border-primary transition-all"
+                        >
+                            <ChevronRight size={18} />
+                        </button>
+                    </div>
                 </div>
                 
-                <div className="flex md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 overflow-x-auto pb-4 md:pb-0 snap-x snap-mandatory scrollbar-none -mx-6 px-6 md:mx-0 md:px-0">
+                <div 
+                    ref={scrollContainerRef}
+                    className="flex md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 overflow-x-auto pb-8 pt-4 md:pb-0 snap-x snap-mandatory scrollbar-none -mx-6 px-6 md:mx-0 md:px-0 scroll-smooth"
+                >
                     {featuredProducts.length > 0 ? featuredProducts.map((product, idx) => (
                         <motion.div 
                             key={product.name}
-                            whileHover={{ y: -5 }}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.1 * idx }}
+                            whileHover={{ y: -8, transition: { duration: 0.3 } }}
                             onClick={() => handleProductClick(product)}
-                            className="relative group overflow-hidden bg-stone-50 h-64 border border-stone-100 hover:border-primary/30 transition-colors cursor-pointer min-w-[280px] md:min-w-0 flex-shrink-0 snap-center rounded-xl"
+                            className="relative group overflow-hidden bg-white h-auto min-h-[400px] border border-stone-200 shadow-sm hover:shadow-xl hover:border-primary/30 transition-all cursor-pointer min-w-[280px] md:min-w-0 flex-shrink-0 snap-center rounded-2xl flex flex-col"
                         >
-                            {/* Simple typography card for featured */}
-                            <div className="absolute inset-0 p-6 flex flex-col justify-between z-10">
-                                <span className="text-xs font-bold text-secondary uppercase tracking-widest flex items-center gap-2">
-                                    <Sparkles size={12} /> Top Rated
+                            {/* Top Image Section */}
+                            <div className="w-full h-64 bg-stone-50 relative flex items-center justify-center p-6 border-b border-stone-100 group-hover:bg-stone-100/50 transition-colors">
+                                {/* Badge */}
+                                <span className="absolute top-4 left-4 z-20 px-3 py-1 bg-white/90 backdrop-blur border border-stone-200 text-[#B8860B] text-[10px] font-bold uppercase tracking-wider rounded-full shadow-sm flex items-center gap-1">
+                                    <Sparkles size={10} fill="currentColor" /> Best Seller
                                 </span>
-                                <div>
-                                    <h3 className="text-3xl font-serif text-primary mb-1">{product.name}</h3>
-                                    <p className="text-xs text-stone-500 uppercase tracking-wider">Premium Grade</p>
+                                
+                                {/* Wishlist */}
+                                <button className="absolute top-4 right-4 z-20 w-8 h-8 rounded-full bg-white/90 backdrop-blur shadow-sm border border-stone-200 flex items-center justify-center text-stone-400 hover:text-red-500 hover:bg-red-50 transition-colors">
+                                   <Leaf size={14} />
+                                </button>
+
+                                {/* Image */}
+                                {product.image ? (
+                                   <motion.img 
+                                        whileHover={{ scale: 1.1 }}
+                                        transition={{ duration: 0.5 }}
+                                        src={product.image} 
+                                        className="w-full h-full object-contain mix-blend-multiply drop-shadow-sm"
+                                        alt={product.name}
+                                   />
+                                ) : (
+                                   <Leaf className="w-1/2 h-1/2 text-primary/20" />
+                                )}
+                            </div>
+
+                            {/* Content Section */}
+                            <div className="p-5 flex-grow flex flex-col">
+                                <div className="mb-2">
+                                    <div className="flex items-center gap-1 mb-2">
+                                        {[1, 2, 3, 4, 5].map((s) => (
+                                            <Sparkles key={s} size={10} className="text-[#FFD700] fill-[#FFD700]" />
+                                        ))}
+                                        <span className="text-[10px] text-stone-400 ml-1 font-medium">(4.9)</span>
+                                    </div>
+                                    <h3 className="text-xl font-serif text-primary mb-1 group-hover:text-secondary transition-colors duration-300 line-clamp-1">
+                                        {product.name}
+                                    </h3>
+                                </div>
+                                
+                                {/* Description */}
+                                <p className="text-xs text-stone-500 line-clamp-2 mb-4 leading-relaxed">
+                                    Premium grade essential oil. 100% pure extraction.
+                                </p>
+
+                                <div className="mt-auto flex items-center justify-between">
+                                    <div>
+                                        <span className="text-[10px] text-stone-400 uppercase tracking-wider block">Wholesale</span>
+                                        <span className="text-lg font-bold text-primary">₹{product.rate || "N/A"}</span>
+                                    </div>
+                                    <button className="px-4 py-2 rounded-lg bg-primary text-white text-xs font-bold uppercase tracking-wider shadow-lg shadow-primary/20 group-hover:bg-secondary transition-all hover:scale-105 active:scale-95 flex items-center gap-2">
+                                        <ShoppingBag size={14} /> Add
+                                    </button>
                                 </div>
                             </div>
-                            <div className="absolute bottom-0 right-0 w-32 h-32 bg-secondary/10 rounded-tl-full translate-y-16 translate-x-16 group-hover:scale-150 transition-transform duration-700" />
                         </motion.div>
                     )) : null}
                 </div>
@@ -375,7 +455,7 @@ export function ProductGrid() {
 
         {/* Main Products - Grid */}
         <motion.div 
-            className="mt-16 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-px bg-stone-200 border border-stone-200"
+            className="mt-16 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-px bg-transparent md:bg-stone-200 border-none md:border md:border-stone-200"
             variants={containerVariants}
             initial="hidden"
             animate="visible"

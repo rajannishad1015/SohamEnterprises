@@ -83,6 +83,28 @@ export function Navbar() {
             </Link>
           </div>
 
+          <div className="flex items-center gap-2 md:hidden">
+            <button 
+                onClick={() => setIsCartOpen(true)}
+                className="relative p-2 rounded-full hover:bg-black/5 transition-colors text-foreground"
+            >
+                <ShoppingBag size={20} />
+                <AnimatePresence>
+                {cartCount > 0 && (
+                    <motion.span 
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    exit={{ scale: 0 }}
+                    key={cartCount}
+                    className="absolute top-0 right-0 flex h-4 w-4 items-center justify-center rounded-full bg-secondary text-[10px] text-white font-bold shadow-sm"
+                    >
+                    {cartCount}
+                    </motion.span>
+                )}
+                </AnimatePresence>
+            </button>
+          </div>
+
           {/* Mobile Menu Button */}
           <button
             className="md:hidden z-50 w-10 h-10 flex items-center justify-center relative rounded-full hover:bg-black/5 transition-colors"

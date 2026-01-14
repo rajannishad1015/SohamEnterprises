@@ -55,7 +55,7 @@ export function CartDrawer() {
             className="fixed inset-y-0 right-0 z-[101] w-full max-w-md bg-white shadow-2xl flex flex-col"
           >
             {/* Header */}
-            <div className="p-6 border-b border-gray-100 flex items-center justify-between bg-white text-primary">
+            <div className="p-4 md:p-6 border-b border-gray-100 flex items-center justify-between bg-white text-primary">
               <div className="flex items-center gap-3">
                 <ShoppingBag size={20} />
                 <h2 className="text-xl font-serif font-bold">Your Cart ({cartCount})</h2>
@@ -69,7 +69,7 @@ export function CartDrawer() {
             </div>
 
             {/* Cart Items List */}
-            <div className="flex-1 overflow-y-auto p-6 space-y-6">
+            <div className="flex-1 overflow-y-auto p-4 md:p-6 space-y-4 md:space-y-6 scrollbar-hide">
               {items.length === 0 ? (
                 <div className="h-full flex flex-col items-center justify-center text-center text-gray-400 space-y-4">
                   <ShoppingBag size={48} className="opacity-20" />
@@ -89,50 +89,50 @@ export function CartDrawer() {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.9 }}
-                    className="flex gap-4 p-4 bg-gray-50 rounded-xl border border-gray-100 group"
+                    className="flex gap-4 p-3 md:p-4 bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-md transition-shadow"
                   >
                     {/* Image Thumbnail */}
-                    <div className="w-20 h-20 bg-white rounded-lg overflow-hidden flex-shrink-0 border border-gray-200">
+                    <div className="w-16 h-16 md:w-20 md:h-20 bg-gray-50 rounded-lg overflow-hidden flex-shrink-0 border border-gray-100">
                         {item.image ? (
                              <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
                         ) : (
-                            <div className="w-full h-full flex items-center justify-center text-gray-300 text-xs font-bold bg-gray-100">IMG</div>
+                            <div className="w-full h-full flex items-center justify-center text-gray-300 text-xs font-bold">IMG</div>
                         )}
                     </div>
 
                     <div className="flex-1 flex flex-col justify-between">
-                      <div className="flex justify-between items-start">
+                      <div className="flex justify-between items-start gap-2">
                         <div>
-                           <h3 className="font-bold text-primary text-sm line-clamp-1">{item.name}</h3>
-                           <p className="text-xs text-gray-500">{item.category || "Premium Product"}</p>
+                           <h3 className="font-bold text-primary text-sm line-clamp-2 leading-tight">{item.name}</h3>
+                           <p className="text-[10px] md:text-xs text-gray-500 mt-0.5">{item.category || "Premium Product"}</p>
                         </div>
                         <button 
                             onClick={() => removeFromCart(item.id)}
-                            className="text-gray-400 hover:text-red-500 transition-colors p-1"
+                            className="text-gray-400 hover:text-red-500 transition-colors p-1 -mr-2 -mt-2"
                         >
-                            <Trash2 size={14} />
+                            <Trash2 size={16} />
                         </button>
                       </div>
 
                       <div className="flex items-center justify-between mt-3">
-                        <div className="flex items-center gap-3 bg-white border border-gray-200 rounded-lg px-2 py-1">
+                        <div className="flex items-center gap-2 bg-gray-50 border border-gray-100 rounded-lg px-2 py-1">
                           <button
                             onClick={() => updateQuantity(item.id, -1)}
-                            className="p-1 hover:bg-gray-100 rounded text-gray-600"
+                            className="p-0.5 hover:bg-white rounded shadow-sm text-gray-600 transition-all"
                             disabled={item.quantity <= 1}
                           >
-                            <Minus size={14} />
+                            <Minus size={12} />
                           </button>
-                          <span className="text-sm font-bold w-4 text-center">{item.quantity}</span>
+                          <span className="text-xs font-bold w-4 text-center">{item.quantity}</span>
                           <button
                             onClick={() => updateQuantity(item.id, 1)}
-                            className="p-1 hover:bg-gray-100 rounded text-gray-600"
+                            className="p-0.5 hover:bg-white rounded shadow-sm text-gray-600 transition-all"
                           >
-                            <Plus size={14} />
+                            <Plus size={12} />
                           </button>
                         </div>
-                        <div className="text-sm font-mono font-medium text-gray-600">
-                            {item.price && !`${item.price}`.includes('/') ? item.price : 'price on request'}
+                        <div className="text-sm font-bold text-primary">
+                            {item.price && !`${item.price}`.includes('/') ? item.price : 'On Request'}
                         </div>
                       </div>
                     </div>
@@ -142,19 +142,25 @@ export function CartDrawer() {
             </div>
 
             {/* Footer / Actions */}
-            <div className="p-6 border-t border-gray-100 bg-gray-50">
+            <div className="p-4 md:p-6 border-t border-gray-100 bg-white pb-8 md:pb-6">
                {items.length > 0 && (
-                   <p className="text-xs text-center text-gray-400 mb-4 italic">
-                       *Prices and availability will be confirmed via WhatsApp.
-                   </p>
+                   <div className="mb-4 space-y-2">
+                       <div className="flex justify-between text-sm text-gray-500">
+                           <span>Total Items</span>
+                           <span className="font-bold text-gray-900">{cartCount}</span>
+                       </div>
+                       <p className="text-[10px] text-center text-gray-400 italic">
+                           *Prices and availability will be confirmed via WhatsApp.
+                       </p>
+                   </div>
                )}
               <button
                 onClick={handleBookOrder}
                 disabled={items.length === 0}
-                className="w-full py-4 bg-gradient-to-r from-[#1A3C2F] to-[#142921] text-white rounded-xl font-bold uppercase tracking-widest hover:shadow-lg hover:shadow-[#1A3C2F]/20 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3"
+                className="w-full py-3.5 md:py-4 bg-[#1A3C2F] text-[#d4af37] rounded-xl font-bold uppercase tracking-widest text-xs md:text-sm hover:bg-[#142921] transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3 shadow-lg shadow-[#1A3C2F]/20"
               >
-                <span>Book Order Request</span>
-                <Send size={18} />
+                <span>Request Quote</span>
+                <Send size={16} />
               </button>
             </div>
           </motion.div>
