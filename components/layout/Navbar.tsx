@@ -10,7 +10,7 @@ import { useCart } from "@/context/CartContext";
 const links = [
   { name: "Home", href: "/" },
   { name: "Shop", href: "/products" },
-  { name: "Our Story", href: "/#about" },
+  { name: "Our Story", href: "/about" },
   { name: "Contact", href: "/#contact" },
 ];
 
@@ -115,59 +115,63 @@ export function Navbar() {
         </div>
       </motion.nav>
 
-      {/* Full Screen Mobile Menu Overlay */}
+      {/* Premium Mobile Menu Overlay */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-             initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
-             animate={{ opacity: 1, backdropFilter: "blur(12px)" }}
-             exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
-             transition={{ duration: 0.4 }}
-             className="fixed inset-0 z-40 bg-white/90 md:hidden flex flex-col items-center justify-center"
+            initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
+            animate={{ opacity: 1, backdropFilter: "blur(12px)" }}
+            exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
+            transition={{ duration: 0.4 }}
+            className="fixed inset-0 z-40 bg-[#1A3C2F]/95 backdrop-blur-xl flex flex-col items-center justify-center"
           >
-             <div className="flex flex-col items-center gap-8 w-full max-w-sm px-6">
-                {links.map((link, index) => (
-                  <motion.div
-                    key={link.name}
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 20 }}
-                    transition={{ delay: index * 0.1, duration: 0.5 }}
-                    className="w-full text-center"
-                  >
-                    <Link
-                      href={link.href}
-                      className="text-4xl font-serif text-primary hover:text-secondary transition-colors block py-2"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      {/* Add subtle interactions */}
-                      <span className="relative inline-block hover:translate-x-2 transition-transform duration-300">
-                        {link.name}
-                      </span>
-                    </Link>
-                  </motion.div>
-                ))}
-
+            <nav className="flex flex-col items-center gap-8 w-full max-w-sm px-6">
+              {links.map((link, index) => (
                 <motion.div
-                    initial={{ opacity: 0, width: 0 }}
-                    animate={{ opacity: 1, width: "100px" }}
-                    transition={{ delay: 0.4, duration: 0.5 }}
-                    className="h-[2px] bg-secondary/30 my-6"
-                />
-
-                <motion.button
-                     initial={{ opacity: 0, y: 20 }}
-                     animate={{ opacity: 1, y: 0 }}
-                     transition={{ delay: 0.5 }}
-                     className="flex items-center gap-3 text-sm font-bold uppercase tracking-widest text-primary border border-primary px-8 py-3 rounded-full hover:bg-primary hover:text-white transition-all"
-                     onClick={() => {
-                        setIsMobileMenuOpen(false);
-                        setIsCartOpen(true);
-                     }}
+                  key={link.name}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 20 }}
+                  transition={{ delay: 0.1 + index * 0.1, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                 >
-                    View Cart ({cartCount}) <ArrowRight size={16} />
-                </motion.button>
-             </div>
+                  <Link
+                    href={link.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="text-4xl md:text-5xl font-serif text-[#F5F5F0] hover:text-[#d4af37] transition-colors tracking-tight"
+                  >
+                    {link.name}
+                  </Link>
+                </motion.div>
+              ))}
+
+              <motion.div
+                 initial={{ opacity: 0, width: 0 }}
+                 animate={{ opacity: 1, width: "100px" }}
+                 transition={{ delay: 0.4, duration: 0.5 }}
+                 className="h-[1px] bg-[#d4af37]/30 my-8"
+              />
+              
+              <motion.div
+                 initial={{ opacity: 0, y: 30 }}
+                 animate={{ opacity: 1, y: 0 }}
+                 exit={{ opacity: 0, y: 20 }}
+                 transition={{ delay: 0.5, duration: 0.5 }}
+              >
+                  <Link 
+                    href="/products"
+                    onClick={() => {
+                        setIsMobileMenuOpen(false);
+                        // Optional: Open cart or go to shop
+                    }}
+                    className="bg-[#d4af37] text-[#1A3C2F] px-8 py-3 rounded-full font-bold uppercase tracking-widest text-sm hover:bg-white transition-colors"
+                  >
+                    Shop Now
+                  </Link>
+              </motion.div>
+            </nav>
+            
+            {/* Background Decoration */}
+            <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
           </motion.div>
         )}
       </AnimatePresence>

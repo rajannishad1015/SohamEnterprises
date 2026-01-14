@@ -7,7 +7,7 @@ import { ContactForm } from "./ContactForm";
 
 export function Contact() {
   return (
-    <section className="min-h-screen py-16 bg-[#020406] text-white relative flex items-center justify-center overflow-hidden" id="contact">
+    <section className="min-h-screen py-12 lg:py-20 bg-[#020406] text-white relative flex items-center justify-center overflow-hidden" id="contact">
         {/* Animated Gradient Background */}
         <div className="absolute inset-0 bg-[#020406]">
             <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-[#2c4a3b]/20 rounded-full blur-[120px] animate-pulse" />
@@ -24,11 +24,11 @@ export function Contact() {
              }} 
         />
 
-        <div className="container mx-auto px-6 relative z-10 perspective-1000">
+        <div className="max-w-6xl mx-auto px-6 relative z-10 perspective-1000">
             <TiltCard>
                 <div className="grid grid-cols-1 lg:grid-cols-5 h-full">
                     {/* Brand Side (Left) */}
-                    <div className="lg:col-span-2 bg-[#0a1f1c]/80 p-10 lg:p-14 flex flex-col justify-between relative overflow-hidden border-b lg:border-b-0 lg:border-r border-white/5">
+                    <div className="lg:col-span-2 bg-[#0a1f1c]/80 p-6 lg:p-14 flex flex-col justify-between relative overflow-hidden border-b lg:border-b-0 lg:border-r border-white/5">
                         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-white/5 to-transparent pointer-events-none" />
                         
                         <div>
@@ -53,7 +53,7 @@ export function Contact() {
 
                     {/* Form Side (Right) */}
                     {/* Form Side (Right) */}
-                    <div className="lg:col-span-3 bg-white/5 p-10 lg:p-14 relative backdrop-blur-xl">
+                    <div className="lg:col-span-3 bg-white/5 p-6 lg:p-14 relative backdrop-blur-xl">
                         <ContactForm />
                     </div>
                 </div>

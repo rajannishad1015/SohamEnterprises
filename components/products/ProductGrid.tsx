@@ -3,12 +3,12 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, SlidersHorizontal, ArrowUpRight, Leaf, Sparkles, AlertCircle } from "lucide-react";
-import { products } from "@/lib/products";
+import { products, Product } from "@/lib/products";
 import { ProductModal } from "@/components/ui/ProductModal";
 import { useCart } from "@/context/CartContext";
 import { ShoppingBag, Check } from "lucide-react";
 
-const ProductImage = ({ product }: { product: typeof products[0] }) => {
+const ProductImage = ({ product }: { product: Product }) => {
   const [imageError, setImageError] = useState(false);
   const { addToCart } = useCart();
   const [isAdded, setIsAdded] = useState(false);
@@ -78,7 +78,7 @@ const ProductImage = ({ product }: { product: typeof products[0] }) => {
   );
 };
 
-const ProductCard = ({ product, onClick }: { product: any; onClick: (product: any) => void }) => {
+const ProductCard = ({ product, onClick }: { product: Product; onClick: (product: Product) => void }) => {
   const { addToCart } = useCart();
   const [isAdded, setIsAdded] = useState(false);
 
@@ -137,7 +137,7 @@ const ProductCard = ({ product, onClick }: { product: any; onClick: (product: an
 
           <button
             onClick={handleAddToCart}
-            className={`w-full py-2.5 rounded-lg text-sm font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2 ${
+            className={`w-full py-3 px-2 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wide transition-all flex items-center justify-center gap-1.5 whitespace-nowrap ${
               isAdded
                 ? "bg-green-500 text-white shadow-green-200"
                 : "bg-primary text-white hover:bg-secondary hover:shadow-lg shadow-stone-200"
@@ -162,23 +162,23 @@ const ProductCard = ({ product, onClick }: { product: any; onClick: (product: an
 export function ProductGrid() {
   const [searchTerm, setSearchTerm] = useState("");
   const [isFocused, setIsFocused] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState<any>(null);
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
-  const handleProductClick = (product: any) => {
+  const handleProductClick = (product: Product) => {
     setSelectedProduct(product);
     setIsModalOpen(true);
   };
   
   // Extract unique categories (mock or real)
-  const categories = ["All", ...Array.from(new Set((products || []).map((p: any) => p.category || "Premium")))];
+  const categories = ["All", ...Array.from(new Set((products || []).map((p: Product) => p.category || "Premium")))];
 
   const featuredNames = ["Lavender Oil", "Peppermint Oil", "Tea Tree Oil", "Rosemary Oil"];
   const featuredProducts = (products || []).filter(p => featuredNames.includes(p?.name));
   
-  const filteredProducts = (products || []).filter((product: any) => {
+  const filteredProducts = (products || []).filter((product: Product) => {
     const matchesSearch = (product?.name || "").toLowerCase().includes(searchTerm.toLowerCase());
     const matchesCategory = selectedCategory === "All" || (product?.category || "Premium") === selectedCategory;
     return matchesSearch && matchesCategory;
@@ -348,13 +348,13 @@ export function ProductGrid() {
                     <div className="h-px bg-stone-200 flex-grow" />
                 </div>
                 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div className="flex md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 overflow-x-auto pb-4 md:pb-0 snap-x snap-mandatory scrollbar-none -mx-6 px-6 md:mx-0 md:px-0">
                     {featuredProducts.length > 0 ? featuredProducts.map((product, idx) => (
                         <motion.div 
                             key={product.name}
                             whileHover={{ y: -5 }}
                             onClick={() => handleProductClick(product)}
-                            className="relative group overflow-hidden bg-stone-50 h-64 border border-stone-100 hover:border-primary/30 transition-colors cursor-pointer"
+                            className="relative group overflow-hidden bg-stone-50 h-64 border border-stone-100 hover:border-primary/30 transition-colors cursor-pointer min-w-[280px] md:min-w-0 flex-shrink-0 snap-center rounded-xl"
                         >
                             {/* Simple typography card for featured */}
                             <div className="absolute inset-0 p-6 flex flex-col justify-between z-10">
@@ -375,7 +375,7 @@ export function ProductGrid() {
 
         {/* Main Products - Grid */}
         <motion.div 
-            className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-px bg-stone-200 border border-stone-200"
+            className="mt-16 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-px bg-stone-200 border border-stone-200"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
@@ -419,6 +419,8 @@ export function ProductGrid() {
         product={selectedProduct}
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
+        relatedProducts={selectedProduct ? (products || []).filter(p => p.category === selectedProduct.category && p.name !== selectedProduct.name) : []}
+        onRelatedProductClick={(product) => setSelectedProduct(product)}
       />
     </section>
   );

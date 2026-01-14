@@ -1,6 +1,17 @@
 "use client";
 
-export const products = [
+export interface Product {
+    name: string;
+    rate: string;
+    image?: string;
+    category?: string;
+    description?: string;
+    tags?: string[];
+    id?: string;
+    price?: string | number;
+}
+
+export const products: Product[] = [
     { name: "Apricot Oil", rate: "850/-", image: "/images/products/apricot-oil.jpg" },
     { name: "Anethol", rate: "1450/-", image: "/images/products/anethol.jpg" },
     { name: "Ajowain Oil", rate: "950/1800" },

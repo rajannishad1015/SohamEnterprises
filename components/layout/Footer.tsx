@@ -28,14 +28,14 @@ export function Footer() {
                 href="https://www.google.com/maps/place/Soham+Enterprises+-+essential+oil+supplier/@18.9485998,72.8311888,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7cf1fb4aa3371:0x3b4d4e141a6cbba9!8m2!3d18.9485998!4d72.8311888!16s%2Fg%2F11lf4b9nf7" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="absolute bottom-6 left-6 bg-white px-6 py-3 rounded-none shadow-lg font-bold uppercase tracking-wider text-xs hover:bg-[#1A3C2F] hover:text-white transition-colors z-10"
+                className="absolute bottom-6 left-6 bg-white text-[#1A3C2F] px-8 py-4 shadow-xl font-bold uppercase tracking-widest text-xs hover:bg-[#1A3C2F] hover:text-white transition-colors z-10 flex items-center gap-2 group-hover:scale-105 duration-300"
              >
-                Get Directions
+                <MapPin size={16} /> Get Directions
              </a>
         </div>
 
         {/* Right Side: Content (50% on large screens) */}
-        <div className="w-full lg:w-1/2 bg-white px-8 md:px-16 py-16 lg:py-24 order-1 lg:order-2 flex flex-col justify-between">
+        <div className="w-full lg:w-1/2 bg-white px-8 md:px-16 py-16 lg:py-20 order-1 lg:order-2 flex flex-col justify-between">
             
             {/* Top: Header & Newsletter */}
             <div className="mb-16">
@@ -67,7 +67,7 @@ export function Footer() {
                         <li><Link href="/" className="hover:text-[#1A3C2F] transition-colors">Home</Link></li>
                         <li><Link href="/products" className="hover:text-[#1A3C2F] transition-colors">Our Products</Link></li>
                         <li><Link href="#" className="hover:text-[#1A3C2F] transition-colors">Sourcing</Link></li>
-                        <li><Link href="#" className="hover:text-[#1A3C2F] transition-colors">About Us</Link></li>
+                        <li><Link href="/about" className="hover:text-[#1A3C2F] transition-colors">About Us</Link></li>
                     </ul>
                 </div>
                 <div>

@@ -9,16 +9,17 @@ const playfair = Playfair_Display({
   variable: "--font-serif",
 });
 
+import { Toaster } from "sonner";
+
+// ... existing code ...
+
 const lato = Lato({
   weight: ["300", "400", "700"],
   subsets: ["latin"],
   variable: "--font-sans",
 });
 
-export const metadata: Metadata = {
-  title: "Soham Enterprise | Premium Essential Oils",
-  description: "Experience the purity of nature with our premium collection of essential oils.",
-};
+// ... existing code ...
 
 export default function RootLayout({
   children,
@@ -33,6 +34,7 @@ export default function RootLayout({
         <CartProvider>
           {children}
           <CartDrawer />
+          <Toaster richColors position="top-center" />
         </CartProvider>
       </body>
     </html>

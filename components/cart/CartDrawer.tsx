@@ -19,7 +19,10 @@ export function CartDrawer() {
   const handleBookOrder = () => {
     if (items.length === 0) return;
 
-    let message = "*New Order Request*\n\n";
+    const now = new Date();
+    let message = "*New Order Request*\n";
+    message += `Date: ${now.toLocaleDateString()} | Time: ${now.toLocaleTimeString()}\n\n`;
+    
     items.forEach((item, index) => {
       message += `${index + 1}. ${item.name} - Qty: ${item.quantity}\n`;
     });
