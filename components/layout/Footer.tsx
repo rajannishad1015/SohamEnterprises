@@ -9,134 +9,107 @@ export function Footer() {
   };
 
   return (
-    <footer className="relative bg-[#F5F5F0] text-[#1A3C2F] overflow-hidden">
-      {/* 
-         Sticky Reveal Effect Spacer 
-         This creates the 'reveal' sensation by adding height while the actual content adheres to the bottom.
-      */}
-      
-      <div className="sticky bottom-0 w-full min-h-screen md:min-h-0 md:h-auto flex flex-col justify-end">
+    <footer className="relative bg-white text-[#1A1A1A] font-sans border-t border-black/5">
+      <div className="flex flex-col lg:flex-row min-h-[600px]">
+        
+        {/* Left Side: Immersive Map (50% on large screens) */}
+        <div className="w-full lg:w-1/2 h-[400px] lg:h-auto relative bg-[#F0F0F0] order-2 lg:order-1 group">
+             <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3773.963428983944!2d72.82861387607424!3d18.948604856455644!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7cf1fb4aa3371%3A0x3b4d4e141a6cbba9!2sSoham%20Enterprises%20-%20essential%20oil%20supplier!5e0!3m2!1sen!2sin!4v1705421000000!5m2!1sen!2sin"
+                width="100%" 
+                height="100%" 
+                style={{ border: 0, filter: 'grayscale(1)' }} 
+                allowFullScreen 
+                loading="lazy" 
+                referrerPolicy="no-referrer-when-downgrade"
+                className="absolute inset-0 w-full h-full transition-all duration-700 group-hover:filter-none"
+             />
+             <a 
+                href="https://www.google.com/maps/place/Soham+Enterprises+-+essential+oil+supplier/@18.9485998,72.8311888,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7cf1fb4aa3371:0x3b4d4e141a6cbba9!8m2!3d18.9485998!4d72.8311888!16s%2Fg%2F11lf4b9nf7" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="absolute bottom-6 left-6 bg-white px-6 py-3 rounded-none shadow-lg font-bold uppercase tracking-wider text-xs hover:bg-[#1A3C2F] hover:text-white transition-colors z-10"
+             >
+                Get Directions
+             </a>
+        </div>
 
-
-        <div className="container mx-auto px-6 py-12 relative">
+        {/* Right Side: Content (50% on large screens) */}
+        <div className="w-full lg:w-1/2 bg-white px-8 md:px-16 py-16 lg:py-24 order-1 lg:order-2 flex flex-col justify-between">
             
-            {/* Top Section: Brand & Newsletter */}
-            <div className="flex flex-col lg:flex-row justify-between items-start mb-24 gap-16">
-                <div className="max-w-xl space-y-8">
-                     <h2 className="text-5xl md:text-6xl font-serif font-medium text-[#1A3C2F]">
-                        Soham<span className="text-[#1A3C2F]/20">.</span>
-                     </h2>
-                     <p className="text-[#1A3C2F]/70 text-lg leading-relaxed font-light">
-                        Pioneering the extraction of nature's purest essences. Bridging ancient botanical wisdom with modern standards to deliver uncompromised purity.
-                     </p>
+            {/* Top: Header & Newsletter */}
+            <div className="mb-16">
+                <div className="flex items-center gap-4 mb-4">
+                    <img src="/logo.png" alt="Soham" className="h-10 w-auto" />
+                    <span className="text-xl font-bold tracking-tight uppercase">Soham Enterprise</span>
                 </div>
-
-                {/* Newsletter Input - Premium Style */}
-                <div className="w-full lg:w-auto min-w-[300px] lg:min-w-[400px]">
-                    <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-[#1A3C2F]/40 mb-6">Stay Updated</h3>
-                    <div className="relative group">
-                        <input 
-                            type="email" 
-                            placeholder="Email Address" 
-                            className="w-full bg-transparent border-b border-[#1A3C2F]/20 py-4 text-[#1A3C2F] placeholder:text-[#1A3C2F]/30 focus:outline-none focus:border-[#1A3C2F] transition-colors"
-                        />
-                        <button className="absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-[#1A3C2F] text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 hover:scale-110">
-                            <ArrowUp size={18} className="rotate-45" />
-                        </button>
-                    </div>
+                <h2 className="text-3xl md:text-5xl font-serif leading-tight mb-8 text-[#1A3C2F]">
+                    Nature's Essence,<br/>Scientifically Curated.
+                </h2>
+                
+                <div className="flex flex-col sm:flex-row gap-4 max-w-md">
+                    <input 
+                        type="email" 
+                        placeholder="Join our newsletter" 
+                        className="flex-1 bg-transparent border-b border-black/20 py-3 text-lg focus:outline-none focus:border-[#1A3C2F] transition-colors placeholder:text-black/30"
+                    />
+                    <button className="text-sm font-bold uppercase tracking-widest hover:text-[#1A3C2F] transition-colors py-3 sm:py-0 text-left sm:text-center">
+                        Subscribe
+                    </button>
                 </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-12 border-t border-[#1A3C2F]/10 pt-16 relative z-10">
-                {/* Column 1: Socials & Badges */}
-                <div className="md:col-span-4 space-y-8">
-                    <div className="flex gap-4">
-                        <Link href="#" className="w-12 h-12 rounded-full border border-[#1A3C2F]/20 flex items-center justify-center text-[#1A3C2F] hover:bg-[#1A3C2F] hover:text-[#F5F5F0] transition-colors"><Instagram size={20} /></Link>
-                        <Link href="#" className="w-12 h-12 rounded-full border border-[#1A3C2F]/20 flex items-center justify-center text-[#1A3C2F] hover:bg-[#1A3C2F] hover:text-[#F5F5F0] transition-colors"><Facebook size={20} /></Link>
-                        <Link href="#" className="w-12 h-12 rounded-full border border-[#1A3C2F]/20 flex items-center justify-center text-[#1A3C2F] hover:bg-[#1A3C2F] hover:text-[#F5F5F0] transition-colors"><Twitter size={20} /></Link>
-                    </div>
-                    {/* Rotating Seal Badge */}
-                    <div className="hidden md:block pt-8">
-                         <div className="relative w-24 h-24 flex items-center justify-center animate-[spin_10s_linear_infinite]">
-                            <svg className="w-full h-full" viewBox="0 0 100 100">
-                                <defs>
-                                    <path id="circle" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" />
-                                </defs>
-                                <text fontSize="11" fill="#1A3C2F" letterSpacing="2">
-                                    <textPath href="#circle">
-                                        PREMIUM QUALITY • SOHAM PURITY •
-                                    </textPath>
-                                </text>
-                            </svg>
-                            <div className="absolute w-2 h-2 rounded-full bg-[#1A3C2F]" />
-                         </div>
-                    </div>
-                </div>
-
-                {/* Column 2: Quick Links */}
-                <div className="md:col-span-2 md:col-start-6">
-                    <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-[#1A3C2F]/40 mb-8">Menu</h3>
-                    <ul className="space-y-4">
-                        {['Our Heritage', 'Collections', 'Sustainability', 'Process', 'Contact'].map((item) => (
-                            <li key={item}>
-                                <Link href="#" className="text-[#1A3C2F] hover:text-[#1A3C2F]/60 transition-colors block w-fit group">
-                                    <span className="relative text-lg font-medium">
-                                        {item}
-                                        <span className="absolute left-0 bottom-0 w-0 h-[1px] bg-[#1A3C2F] group-hover:w-full transition-all duration-300" />
-                                    </span>
-                                </Link>
-                            </li>
-                        ))}
+            {/* Middle: Links Grid */}
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-12 mb-16">
+                <div>
+                    <h4 className="font-bold uppercase text-xs tracking-widest mb-6 text-black/40">Explore</h4>
+                    <ul className="space-y-4 text-sm font-medium text-black/70">
+                        <li><Link href="/" className="hover:text-[#1A3C2F] transition-colors">Home</Link></li>
+                        <li><Link href="/products" className="hover:text-[#1A3C2F] transition-colors">Our Products</Link></li>
+                        <li><Link href="#" className="hover:text-[#1A3C2F] transition-colors">Sourcing</Link></li>
+                        <li><Link href="#" className="hover:text-[#1A3C2F] transition-colors">About Us</Link></li>
                     </ul>
                 </div>
-
-                {/* Column 3: Legal */}
-                <div className="md:col-span-2">
-                    <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-[#1A3C2F]/40 mb-8">Legal</h3>
-                    <ul className="space-y-4">
-                        {['Privacy Policy', 'Terms of Use', 'Certifications', 'Sitemap'].map((item) => (
-                            <li key={item}>
-                                <Link href="#" className="text-[#1A3C2F] hover:text-[#1A3C2F]/60 transition-colors block w-fit text-sm font-medium">
-                                    {item}
-                                </Link>
-                            </li>
-                        ))}
+                <div>
+                    <h4 className="font-bold uppercase text-xs tracking-widest mb-6 text-black/40">Contact</h4>
+                    <ul className="space-y-4 text-sm font-medium text-black/70">
+                        <li><a href="mailto:sales@sohamenterprise.com" className="hover:text-[#1A3C2F] transition-colors">Email Us</a></li>
+                        <li><a href="tel:+919930282855" className="hover:text-[#1A3C2F] transition-colors">Call Now</a></li>
+                        <li><a href="#" className="hover:text-[#1A3C2F] transition-colors">WhatsApp</a></li>
                     </ul>
                 </div>
-
-                 {/* Column 4: Contact */}
-                <div className="md:col-span-3">
-                    <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-[#1A3C2F]/40 mb-8">Contact</h3>
-                    <ul className="space-y-6">
-                        <li className="flex gap-4 items-start text-[#1A3C2F] group">
-                            <div className="w-10 h-10 rounded-full bg-[#1A3C2F]/5 flex items-center justify-center shrink-0 group-hover:bg-[#1A3C2F] group-hover:text-white transition-colors">
-                                <MapPin size={18} />
-                            </div>
-                            <span className="leading-relaxed opacity-80 pt-1">301, Saubhagya Complex,<br/>S.P. Ring Road, Ahmedabad,<br/>Gujarat, India 382415</span>
-                        </li>
-                        <li className="flex gap-4 items-center text-[#1A3C2F] group">
-                             <div className="w-10 h-10 rounded-full bg-[#1A3C2F]/5 flex items-center justify-center shrink-0 group-hover:bg-[#1A3C2F] group-hover:text-white transition-colors">
-                                <Mail size={18} />
-                            </div>
-                             <span className="opacity-80">sales@sohamenterprise.com</span>
-                        </li>
-                        <li className="flex gap-4 items-center text-[#1A3C2F] group">
-                             <div className="w-10 h-10 rounded-full bg-[#1A3C2F]/5 flex items-center justify-center shrink-0 group-hover:bg-[#1A3C2F] group-hover:text-white transition-colors">
-                                <Phone size={18} />
-                            </div>
-                             <span className="opacity-80">+91 98765 43210</span>
-                        </li>
+                <div className="col-span-2 md:col-span-1">
+                    <h4 className="font-bold uppercase text-xs tracking-widest mb-6 text-black/40">Legal</h4>
+                    <ul className="space-y-4 text-sm font-medium text-black/70">
+                        <li><Link href="#" className="hover:text-[#1A3C2F] transition-colors">Privacy Policy</Link></li>
+                        <li><Link href="#" className="hover:text-[#1A3C2F] transition-colors">Terms of Use</Link></li>
                     </ul>
                 </div>
             </div>
 
-            <div className="flex flex-col md:flex-row justify-between items-center pt-24 pb-8 border-t border-[#1A3C2F]/5 mt-16 text-[#1A3C2F]/40 text-xs tracking-wider uppercase">
-                <span>© {new Date().getFullYear()} Soham Enterprise. All rights reserved.</span>
-                <span>Crafted with precision.</span>
+            {/* Bottom: Copyright & Socials */}
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 pt-8 border-t border-black/5">
+                <p className="text-xs text-black/40">© {new Date().getFullYear()} Soham Enterprise.</p>
+                <div className="flex gap-4">
+                    <SocialIcon icon={Instagram} />
+                    <SocialIcon icon={Facebook} />
+                    <SocialIcon icon={Twitter} />
+                    <button onClick={scrollToTop} className="ml-4 p-2 rounded-full border border-black/10 hover:bg-[#1A3C2F] hover:border-[#1A3C2F] hover:text-white transition-all">
+                        <ArrowUp size={16} />
+                    </button>
+                </div>
             </div>
 
         </div>
       </div>
     </footer>
   );
+}
+
+function SocialIcon({ icon: Icon }: { icon: any }) {
+    return (
+        <a href="#" className="p-2 text-black/60 hover:text-[#1A3C2F] transition-colors">
+            <Icon size={20} />
+        </a>
+    )
 }

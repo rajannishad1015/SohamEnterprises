@@ -93,6 +93,7 @@ export function Hero() {
                 src="/hero-bg.png"
                 alt="Organic Essential Oil Bottle"
                 fill
+                sizes="50vw"
                 className="object-cover"
                 priority
             />

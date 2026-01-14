@@ -4,9 +4,17 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Search, Download, Sparkles } from "lucide-react";
 import { products } from "@/lib/products";
+import { ProductModal } from "@/components/ui/ProductModal";
 
 export function ProductList() {
   const [searchTerm, setSearchTerm] = useState("");
+  const [selectedProduct, setSelectedProduct] = useState<any>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleProductClick = (product: any) => {
+    setSelectedProduct(product);
+    setIsModalOpen(true);
+  };
 
   const filteredProducts = products.filter((product) =>
     product.name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -81,7 +89,8 @@ export function ProductList() {
                                     initial={{ opacity: 0 }}
                                     animate={{ opacity: 1 }}
                                     transition={{ delay: index * 0.02 }}
-                                    className="hover:bg-accent/10 transition-colors group"
+                                    className="hover:bg-accent/10 transition-colors group cursor-pointer"
+                                    onClick={() => handleProductClick(product)}
                                 >
                                     <td className="px-8 py-4 text-primary font-medium group-hover:text-secondary transition-colors">
                                         {product.name}
@@ -117,6 +126,11 @@ export function ProductList() {
         </div>
 
       </div>
+        <ProductModal
+          product={selectedProduct}
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+        />
     </section>
   );
 }

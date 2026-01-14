@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { ShoppingBag, Menu, X, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useCart } from "@/context/CartContext";
 
 const links = [
   { name: "Home", href: "/" },
@@ -15,6 +16,7 @@ const links = [
 
 export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { cartCount, setIsCartOpen } = useCart();
 
   return (
     <>
@@ -32,9 +34,10 @@ export function Navbar() {
           <Link href="/" className="z-50 relative group">
             <motion.div 
                whileHover={{ scale: 1.05 }}
-               className="text-2xl font-serif font-bold text-primary tracking-tight flex items-center gap-1"
+               className="flex items-center gap-3"
             >
-               Soham<span className="text-secondary text-4xl leading-[0] mb-2 transition-transform duration-500 group-hover:rotate-12">.</span>
+               <img src="/logo.png" alt="Soham Enterprise" className="h-10 w-auto" />
+               <span className="text-sm md:text-xl font-serif font-bold text-primary tracking-tight">Soham Enterprise</span>
             </motion.div>
           </Link>
 
@@ -54,15 +57,30 @@ export function Navbar() {
 
           {/* Icons & CTA */}
           <div className="hidden md:flex items-center gap-6">
-            <button className="relative p-2 rounded-full hover:bg-black/5 transition-colors text-foreground">
+            <button 
+              onClick={() => setIsCartOpen(true)}
+              className="relative p-2 rounded-full hover:bg-black/5 transition-colors text-foreground"
+            >
               <ShoppingBag size={20} />
-              <span className="absolute top-0 right-0 flex h-4 w-4 items-center justify-center rounded-full bg-secondary text-[10px] text-white font-bold shadow-sm">
-                0
-              </span>
+              <AnimatePresence>
+                {cartCount > 0 && (
+                  <motion.span 
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    exit={{ scale: 0 }}
+                    key={cartCount}
+                    className="absolute top-0 right-0 flex h-4 w-4 items-center justify-center rounded-full bg-secondary text-[10px] text-white font-bold shadow-sm"
+                  >
+                    {cartCount}
+                  </motion.span>
+                )}
+              </AnimatePresence>
             </button>
-            <button className="bg-primary text-white px-6 py-2.5 text-xs font-bold uppercase tracking-widest hover:bg-primary/90 transition-all rounded-full shadow-lg hover:shadow-primary/20 hover:-translate-y-0.5 active:translate-y-0">
-                Get Started
-            </button>
+            <Link href="/products">
+                <button className="bg-primary text-white px-6 py-2.5 text-xs font-bold uppercase tracking-widest hover:bg-primary/90 transition-all rounded-full shadow-lg hover:shadow-primary/20 hover:-translate-y-0.5 active:translate-y-0">
+                    Get Started
+                </button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -142,9 +160,12 @@ export function Navbar() {
                      animate={{ opacity: 1, y: 0 }}
                      transition={{ delay: 0.5 }}
                      className="flex items-center gap-3 text-sm font-bold uppercase tracking-widest text-primary border border-primary px-8 py-3 rounded-full hover:bg-primary hover:text-white transition-all"
-                     onClick={() => setIsMobileMenuOpen(false)}
+                     onClick={() => {
+                        setIsMobileMenuOpen(false);
+                        setIsCartOpen(true);
+                     }}
                 >
-                    View Cart (0) <ArrowRight size={16} />
+                    View Cart ({cartCount}) <ArrowRight size={16} />
                 </motion.button>
              </div>
           </motion.div>

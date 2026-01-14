@@ -3,6 +3,7 @@
 import { motion, useMotionTemplate, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { Send, MapPin, Phone, Mail, ArrowUpRight, Sparkles } from "lucide-react";
 import React, { useRef, useState } from 'react';
+import { ContactForm } from "./ContactForm";
 
 export function Contact() {
   return (
@@ -46,30 +47,14 @@ export function Contact() {
                         <div className="space-y-8 mt-12">
                             <ContactRow icon={MapPin} text="Gujarat, India" />
                             <ContactRow icon={Mail} text="info@sohamenterprise.com" />
-                            <ContactRow icon={Phone} text="+91 98765 43210" />
+                            <ContactRow icon={Phone} text="+91 99302 82855" />
                         </div>
                     </div>
 
                     {/* Form Side (Right) */}
+                    {/* Form Side (Right) */}
                     <div className="lg:col-span-3 bg-white/5 p-10 lg:p-14 relative backdrop-blur-xl">
-                        <form className="space-y-8">
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                <CrystalInput label="First Name" />
-                                <CrystalInput label="Last Name" />
-                            </div>
-                            <CrystalInput label="Email Address" type="email" />
-                            <div className="space-y-2">
-                                <label className="text-xs uppercase font-bold text-white/40 tracking-widest pl-1">Message</label>
-                                <textarea 
-                                    className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-[#34d399]/50 focus:bg-white/10 transition-all resize-none min-h-[120px]"
-                                />
-                            </div>
-
-                            <button className="w-full bg-gradient-to-r from-[#34d399] to-[#2c4a3b] text-white py-4 rounded-xl font-bold tracking-widest uppercase hover:opacity-90 transition-opacity shadow-lg shadow-[#34d399]/20 flex items-center justify-center gap-3 group">
-                                Send Message
-                                <ArrowUpRight size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                            </button>
-                        </form>
+                        <ContactForm />
                     </div>
                 </div>
             </TiltCard>
