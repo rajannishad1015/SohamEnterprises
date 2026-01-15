@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Leaf, Droplets, Sparkles } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export function Hero() {
   return (
@@ -53,10 +54,12 @@ export function Hero() {
              transition={{ duration: 0.8, delay: 0.6 }}
              className="flex flex-wrap gap-4"
           >
-            <button className="bg-primary text-white px-8 py-4 rounded-none border border-primary text-sm md:text-base font-medium transition-all hover:bg-primary/90 hover:shadow-xl flex items-center gap-3 w-full md:w-auto justify-center">
-              Explore Collection
-              <ArrowRight size={18} />
-            </button>
+             <Link href="/products" className="w-full md:w-auto">
+                <button className="bg-primary text-white px-8 py-4 rounded-none border border-primary text-sm md:text-base font-medium transition-all hover:bg-primary/90 hover:shadow-xl flex items-center gap-3 w-full justify-center">
+                  Explore Collection
+                  <ArrowRight size={18} />
+                </button>
+             </Link>
           </motion.div>
 
           {/* Quick Stats / Trust */}

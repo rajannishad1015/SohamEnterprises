@@ -6,7 +6,36 @@ import { Search, SlidersHorizontal, ArrowUpRight, Leaf, Sparkles, AlertCircle, C
 import { products, Product } from "@/lib/products";
 import { ProductModal } from "@/components/ui/ProductModal";
 import { useCart } from "@/context/CartContext";
-import { ShoppingBag, Check } from "lucide-react";
+import { ShoppingBag, Check, Flower2 } from "lucide-react";
+
+// --- Custom Modern-Indian Assets ---
+
+const MandalaPattern = ({ className }: { className?: string }) => (
+  <svg className={className} width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <pattern id="mandala" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+        <path d="M20 0 L25 10 L35 15 L25 20 L20 30 L15 20 L5 15 L15 10 Z" fill="none" stroke="currentColor" strokeWidth="1" opacity="0.2"/>
+        <circle cx="20" cy="20" r="5" fill="none" stroke="currentColor" strokeWidth="1" opacity="0.3"/>
+        <path d="M0 0 L40 40 M40 0 L0 40" stroke="currentColor" strokeWidth="0.5" opacity="0.1"/>
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#mandala)" />
+  </svg>
+);
+
+const MainBackgroundPattern = () => (
+    <div className="absolute inset-0 pointer-events-none z-0 opacity-[0.03]" style={{
+        backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+    }} />
+);
+
+const LotusDivider = () => (
+  <div className="flex items-center justify-center gap-4 my-8 opacity-60">
+    <div className="h-px w-24 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent" />
+    <Flower2 size={24} className="text-[#D4AF37]" strokeWidth={1.5} />
+    <div className="h-px w-24 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent" />
+  </div>
+);
 
 const ProductImage = ({ product }: { product: Product }) => {
   const [imageError, setImageError] = useState(false);
@@ -41,8 +70,8 @@ const ProductImage = ({ product }: { product: Product }) => {
         <div className="w-full h-full flex flex-col items-center justify-center border-[12px] border-white/50">
             {/* Elegant Placeholder */}
             <div className="w-full h-full border border-stone-200 flex flex-col items-center justify-center bg-[#fafaf9] p-4 text-center">
-                <div className="w-12 h-12 mb-3 rounded-full border border-primary/20 flex items-center justify-center text-primary/40">
-                    <Leaf size={20} strokeWidth={1} />
+                <div className="w-12 h-12 mb-3 rounded-full border border-[#D4AF37]/30 flex items-center justify-center text-[#D4AF37]/60">
+                    <Flower2 size={20} strokeWidth={1} />
                 </div>
                 <span className="font-serif text-2xl text-primary/80 leading-none mb-1 opacity-80">
                     {(product.name || "UN").substring(0, 2).toUpperCase()}
@@ -60,7 +89,7 @@ const ProductImage = ({ product }: { product: Product }) => {
         whileHover={{ opacity: 1, y: 0 }}
         className="absolute top-3 right-3"
       >
-         <button className="bg-white text-primary p-2 rounded-full shadow-lg hover:bg-primary hover:text-white transition-colors border border-stone-100">
+         <button className="bg-white text-primary p-2 rounded-full shadow-lg hover:bg-[#D4AF37] hover:text-white transition-colors border border-stone-100">
             <ArrowUpRight size={16} />
          </button>
       </motion.div>
@@ -115,8 +144,13 @@ const ProductCard = ({ product, onClick }: { product: Product; onClick: (product
       layout
       variants={itemVariants}
       onClick={() => onClick(product)}
-      className="bg-white p-3 md:p-6 group hover:z-10 hover:shadow-2xl transition-all duration-300 ease-out relative cursor-pointer flex flex-col h-full min-h-[340px] rounded-xl border border-stone-200 hover:border-primary/40"
+      className="bg-white p-3 md:p-6 group hover:z-10 hover:shadow-2xl transition-all duration-500 ease-out relative cursor-pointer flex flex-col h-full min-h-[340px] rounded-0 border border-stone-100 hover:border-[#D4AF37]/60 hover:shadow-[#D4AF37]/10"
     >
+      {/* Decorative Corner Borders (Indian Touch) */}
+      <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-[#D4AF37]/0 group-hover:border-[#D4AF37]/40 transition-all duration-500 rounded-tl-lg" />
+      <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-[#D4AF37]/0 group-hover:border-[#D4AF37]/40 transition-all duration-500 rounded-tr-lg" />
+      <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-[#D4AF37]/0 group-hover:border-[#D4AF37]/40 transition-all duration-500 rounded-bl-lg" />
+      <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-[#D4AF37]/0 group-hover:border-[#D4AF37]/40 transition-all duration-500 rounded-br-lg" />
       <div className="mb-4 w-full aspect-square relative flex items-center justify-center bg-stone-50 rounded-lg overflow-hidden border border-stone-100">
          <div className="w-full h-full p-4 flex items-center justify-center">
             <ProductImage product={product} />
@@ -127,7 +161,11 @@ const ProductCard = ({ product, onClick }: { product: Product; onClick: (product
         <h3 className="text-sm md:text-lg font-serif text-primary mb-1 md:mb-2 group-hover:text-secondary transition-colors duration-300 line-clamp-2 min-h-[2.5em] md:min-h-[3.5em] leading-tight flex items-end justify-center">
           {product.name || "Unknown Product"}
         </h3>
-        <div className="h-px w-8 bg-stone-300 mb-2 md:mb-4 group-hover:w-16 group-hover:bg-secondary transition-all duration-300 opacity-50" />
+        <div className="flex items-center gap-2 mb-3 opacity-60">
+             <div className="h-px w-6 bg-[#D4AF37]" />
+             <div className="rotate-45 w-1 h-1 bg-[#D4AF37]" />
+             <div className="h-px w-6 bg-[#D4AF37]" />
+        </div>
 
         <div className="mt-auto w-full">
           <p className="text-[10px] md:text-xs text-stone-400 uppercase tracking-widest mb-0.5 md:mb-1">
@@ -142,7 +180,7 @@ const ProductCard = ({ product, onClick }: { product: Product; onClick: (product
             className={`w-full py-2 md:py-3 px-2 rounded-lg md:rounded-xl text-[10px] md:text-sm font-bold uppercase tracking-wide transition-all flex items-center justify-center gap-1.5 whitespace-nowrap overflow-hidden ${
               isAdded
                 ? "bg-green-500 text-white shadow-green-200"
-                : "bg-primary text-white hover:bg-secondary hover:shadow-lg shadow-stone-200"
+                : "bg-stone-900 text-white hover:bg-[#D4AF37] hover:shadow-lg shadow-stone-200 font-serif tracking-widest"
             }`}
           >
             {isAdded ? (
@@ -245,11 +283,18 @@ export function ProductGrid() {
   }
 
   return (
-    <section className="bg-white min-h-screen pb-32">
+    <section className="bg-[#fdfcf8] min-h-screen pb-32 relative">
+      <MainBackgroundPattern />
+      <div className="relative z-10">
         
       {/* Header Section */}
-      <div className="bg-primary text-white py-20 px-6 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] mix-blend-overlay" />
+      {/* Header Section */}
+      <div className="bg-[#1a1a1a] text-[#fdfcf8] py-24 px-6 relative overflow-hidden">
+        {/* Background Mandala Pattern */}
+        <div className="absolute inset-0 opacity-10 text-[#D4AF37]">
+            <MandalaPattern />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#1a1a1a]/90" />
         
         <div className="container mx-auto relative z-10 max-w-6xl">
             <motion.div 
@@ -262,9 +307,9 @@ export function ProductGrid() {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3 }}
-                    className="block text-secondary text-xs uppercase tracking-[0.3em] mb-4"
+                    className="block text-[#D4AF37] text-sm uppercase tracking-[0.4em] mb-4 font-serif"
                 >
-                    Wholesale Catalog
+                    ✦ Royal Ayurvedic Selection ✦
                 </motion.span>
                 <h1 className="text-5xl md:text-7xl font-serif mb-6 text-[#fdfcf8]">
                     Natural Compounds
@@ -328,17 +373,17 @@ export function ProductGrid() {
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
-                    className="overflow-hidden max-w-4xl mx-auto"
+                    className="overflow-hidden max-w-4xl mx-auto border-t border-stone-100/50 mt-2"
                 >
-                    <div className="pt-4 pb-2 flex flex-wrap gap-2 justify-center">
+                    <div className="pt-6 pb-2 flex flex-wrap gap-3 justify-center">
                         {categories.map(cat => (
                             <button
                                 key={cat}
                                 onClick={() => setSelectedCategory(cat)}
                                 className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all ${
                                     selectedCategory === cat 
-                                    ? 'bg-primary text-white shadow-lg shadow-primary/20 transform scale-105' 
-                                    : 'bg-white border border-stone-200 text-stone-500 hover:border-primary/50 hover:text-primary'
+                                    ? 'bg-[#D4AF37] text-white shadow-lg shadow-[#D4AF37]/20 border-[#D4AF37]' 
+                                    : 'bg-white border border-stone-200 text-stone-500 hover:border-[#D4AF37]/50 hover:text-[#D4AF37]'
                                 }`}
                             >
                                 {cat}
@@ -359,8 +404,11 @@ export function ProductGrid() {
             >
                  <div className="flex items-center gap-4 mb-4 md:mb-8 justify-between">
                     <div className="flex items-center gap-4 flex-grow">
-                        <h2 className="text-xl md:text-2xl font-serif text-primary whitespace-nowrap">Featured Selection</h2>
-                        <div className="h-px bg-stone-200 flex-grow" />
+                        <div className="flex flex-col">
+                             <span className="text-[10px] uppercase tracking-[0.3em] text-[#D4AF37] font-bold mb-1">Curated</span>
+                             <h2 className="text-2xl md:text-3xl font-serif text-primary whitespace-nowrap">Featured Selection</h2>
+                        </div>
+                        <div className="h-px bg-gradient-to-r from-[#D4AF37]/50 to-transparent flex-grow mt-4" />
                     </div>
                     <div className="flex gap-2">
                         <button 
@@ -371,7 +419,7 @@ export function ProductGrid() {
                         </button>
                         <button 
                             onClick={() => scroll('right')}
-                            className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-stone-200 flex items-center justify-center text-stone-500 hover:bg-primary hover:text-white hover:border-primary transition-all"
+                            className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-stone-200 flex items-center justify-center text-stone-500 hover:bg-[#D4AF37] hover:text-white hover:border-[#D4AF37] transition-all"
                         >
                             <ChevronRight size={18} />
                         </button>
@@ -390,13 +438,13 @@ export function ProductGrid() {
                             transition={{ delay: 0.1 * idx }}
                             whileHover={{ y: -8, transition: { duration: 0.3 } }}
                             onClick={() => handleProductClick(product)}
-                            className="relative group overflow-hidden bg-white h-auto min-h-[400px] border border-stone-200 shadow-sm hover:shadow-xl hover:border-primary/30 transition-all cursor-pointer min-w-[280px] md:min-w-0 flex-shrink-0 snap-center rounded-2xl flex flex-col"
+                            className="relative group overflow-hidden bg-white h-auto min-h-[400px] border border-stone-100 shadow-sm hover:shadow-xl hover:border-[#D4AF37]/40 transition-all cursor-pointer min-w-[280px] md:min-w-0 flex-shrink-0 snap-center rounded-none flex flex-col"
                         >
                             {/* Top Image Section */}
                             <div className="w-full h-64 bg-stone-50 relative flex items-center justify-center p-6 border-b border-stone-100 group-hover:bg-stone-100/50 transition-colors">
                                 {/* Badge */}
-                                <span className="absolute top-4 left-4 z-20 px-3 py-1 bg-white/90 backdrop-blur border border-stone-200 text-[#B8860B] text-[10px] font-bold uppercase tracking-wider rounded-full shadow-sm flex items-center gap-1">
-                                    <Sparkles size={10} fill="currentColor" /> Best Seller
+                                <span className="absolute top-4 left-4 z-20 px-3 py-1 bg-white/95 backdrop-blur border border-[#D4AF37]/20 text-[#D4AF37] text-[10px] font-bold uppercase tracking-wider shadow-sm flex items-center gap-1">
+                                    <Sparkles size={10} fill="currentColor" /> Royal Edition
                                 </span>
                                 
                                 {/* Wishlist */}
@@ -442,7 +490,7 @@ export function ProductGrid() {
                                         <span className="text-[10px] text-stone-400 uppercase tracking-wider block">Wholesale</span>
                                         <span className="text-lg font-bold text-primary">₹{product.rate || "N/A"}</span>
                                     </div>
-                                    <button className="px-4 py-2 rounded-lg bg-primary text-white text-xs font-bold uppercase tracking-wider shadow-lg shadow-primary/20 group-hover:bg-secondary transition-all hover:scale-105 active:scale-95 flex items-center gap-2">
+                                    <button className="px-4 py-2 rounded-none bg-[#1a1a1a] text-white text-xs font-bold uppercase tracking-wider shadow-lg shadow-stone-200 group-hover:bg-[#D4AF37] transition-all hover:scale-105 active:scale-95 flex items-center gap-2">
                                         <ShoppingBag size={14} /> Add
                                     </button>
                                 </div>
@@ -452,6 +500,8 @@ export function ProductGrid() {
                 </div>
             </motion.div>
         )}
+
+        <LotusDivider />
 
         {/* Main Products - Grid */}
         <motion.div 
@@ -488,9 +538,10 @@ export function ProductGrid() {
         <div className="mt-20 text-center">
             <button 
                 onClick={() => alert("Catalog PDF will be available soon!")}
-                className="px-8 py-3 border border-primary text-primary text-sm font-bold tracking-[0.2em] hover:bg-primary hover:text-white transition-all uppercase"
+                className="px-10 py-4 border-2 border-[#D4AF37] text-[#D4AF37] text-sm font-bold tracking-[0.2em] hover:bg-[#D4AF37] hover:text-white transition-all uppercase relative overflow-hidden group"
             >
-                Download PDF Catalog
+                <span className="relative z-10">Download Royal Catalog</span>
+                <div className="absolute inset-0 bg-white/20 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out" />
             </button>
         </div>
 
@@ -502,6 +553,7 @@ export function ProductGrid() {
         relatedProducts={selectedProduct ? (products || []).filter(p => p.category === selectedProduct.category && p.name !== selectedProduct.name) : []}
         onRelatedProductClick={(product) => setSelectedProduct(product)}
       />
+      </div>
     </section>
   );
 }

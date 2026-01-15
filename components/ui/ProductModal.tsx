@@ -14,6 +14,15 @@ interface ProductModalProps {
   onRelatedProductClick?: (product: Product) => void;
 }
 
+// Mandala Pattern Component for the Modal
+const ModalPattern = () => (
+  <div className="absolute top-0 right-0 w-64 h-64 opacity-[0.03] pointer-events-none rotate-45 transform translate-x-1/3 -translate-y-1/3">
+     <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" className="w-full h-full fill-[#1A3C2F]">
+        <path d="M42.7,-72.2C56.1,-65.8,68.4,-57.1,77.6,-46.1C86.8,-35.1,92.9,-21.8,92.6,-8.7C92.2,4.4,85.5,17.4,76.5,28.6C67.5,39.9,56.2,49.4,44.2,56.6C32.1,63.9,19.3,68.7,6.1,69.7C-7.1,70.8,-20.7,68,-33.4,61.9C-46.1,55.8,-57.9,46.3,-66.6,34.4C-75.3,22.6,-80.9,8.3,-80.2,-5.7C-79.5,-19.7,-72.6,-33.4,-62.4,-44.6C-52.2,-55.8,-38.7,-64.5,-25.2,-70.7C-11.7,-76.9,1.7,-80.5,14.7,-79.8C27.6,-79.1,40.1,-74.1,42.7,-72.2Z" transform="translate(100 100)" />
+     </svg>
+  </div>
+);
+
 export function ProductModal({ product, isOpen, onClose, relatedProducts = [], onRelatedProductClick }: ProductModalProps) {
   const { addToCart } = useCart();
   const [isAdded, setIsAdded] = useState(false);
@@ -120,11 +129,15 @@ export function ProductModal({ product, isOpen, onClose, relatedProducts = [], o
             </div>
 
             {/* Right: Content Section */}
-            <div className="w-full md:w-1/2 flex flex-col bg-white overflow-hidden max-h-[60vh] md:max-h-full">
-                <div className="p-4 md:p-10 flex-grow overflow-y-auto no-scrollbar">
-                    <span className="text-[#1A3C2F]/60 text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] mb-1 md:mb-2 block">
-                        {displayCategory}
-                    </span>
+            <div className="w-full md:w-1/2 flex flex-col bg-[#FDFCF8] overflow-hidden max-h-[60vh] md:max-h-full relative">
+                 <ModalPattern /> {/* Decoration */}
+                 <div className="p-5 md:p-10 flex-grow overflow-y-auto no-scrollbar relative z-10">
+                     <div className="flex items-center gap-2 mb-2">
+                        <div className="h-[1px] w-8 bg-[#D4AF37]" />
+                        <span className="text-[#D4AF37] text-[10px] md:text-xs font-bold uppercase tracking-[0.25em]">
+                            {displayCategory}
+                        </span>
+                     </div>
                     <div className="flex justify-between items-start gap-4">
                         <h2 className="text-2xl md:text-4xl font-serif text-[#1A3C2F] mb-3 md:mb-4 leading-tight">
                             {displayName}
@@ -150,27 +163,26 @@ export function ProductModal({ product, isOpen, onClose, relatedProducts = [], o
 
                     <div className="flex flex-wrap gap-2 mb-6 md:mb-8">
                         {displayTags.map((tag, i) => (
-                            <span key={i} className="px-2 py-0.5 md:px-3 md:py-1 bg-[#1A3C2F]/5 text-[#1A3C2F]/70 text-[10px] md:text-xs rounded-full font-medium border border-[#1A3C2F]/10">
+                            <span key={i} className="px-3 py-1 bg-[#D4AF37]/5 text-[#8a701f] text-[10px] md:text-xs rounded-full font-medium border border-[#D4AF37]/20 uppercase tracking-wide">
                             {tag}
                             </span>
                         ))}
                     </div>
 
-                    {/* Tabs */}
-                    <div className="flex items-center gap-6 border-b border-gray-100 mb-4 md:mb-6">
+                    <div className="flex items-center gap-8 border-b border-[#D4AF37]/10 mb-5 md:mb-7">
                         <button 
                             onClick={() => setActiveTab('description')}
-                            className={`pb-2 md:pb-3 text-xs md:text-sm font-bold uppercase tracking-wider transition-colors relative ${activeTab === 'description' ? 'text-[#1A3C2F]' : 'text-gray-400 hover:text-gray-600'}`}
+                            className={`pb-3 text-xs md:text-sm font-bold uppercase tracking-widest transition-colors relative ${activeTab === 'description' ? 'text-[#1A3C2F]' : 'text-gray-400 hover:text-[#D4AF37]'}`}
                         >
                             Overview
-                            {activeTab === 'description' && <motion.div layoutId="activeTab" className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#1A3C2F]" />}
+                            {activeTab === 'description' && <motion.div layoutId="activeTab" className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#D4AF37]" />}
                         </button>
                         <button 
                             onClick={() => setActiveTab('specs')}
-                            className={`pb-2 md:pb-3 text-xs md:text-sm font-bold uppercase tracking-wider transition-colors relative ${activeTab === 'specs' ? 'text-[#1A3C2F]' : 'text-gray-400 hover:text-gray-600'}`}
+                            className={`pb-3 text-xs md:text-sm font-bold uppercase tracking-widest transition-colors relative ${activeTab === 'specs' ? 'text-[#1A3C2F]' : 'text-gray-400 hover:text-[#D4AF37]'}`}
                         >
                             Specifications
-                            {activeTab === 'specs' && <motion.div layoutId="activeTab" className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#1A3C2F]" />}
+                            {activeTab === 'specs' && <motion.div layoutId="activeTab" className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#D4AF37]" />}
                         </button>
                     </div>
 
@@ -258,28 +270,30 @@ export function ProductModal({ product, isOpen, onClose, relatedProducts = [], o
                     )}
                 </div>
 
+
+    
                 {/* Footer Buttons - Compact Grid on Mobile */}
-                <div className="p-4 md:p-8 bg-gray-50 border-t border-gray-100 flex flex-row md:flex-col gap-3 md:gap-3 shrink-0">
+                <div className="p-4 md:p-8 bg-white/50 backdrop-blur-sm border-t border-[#D4AF37]/10 flex flex-row md:flex-col gap-3 md:gap-3 shrink-0 relative z-20">
                     <button
                         onClick={handleAddToCart}
                         disabled={isAdded}
-                        className="flex-1 py-3 md:py-4 bg-white border border-[#1A3C2F] text-[#1A3C2F] rounded-lg md:rounded-xl text-xs md:text-sm font-bold uppercase tracking-widest hover:bg-[#1A3C2F]/5 transition-all flex items-center justify-center gap-2 active:scale-[0.98]"
+                        className="flex-1 py-3.5 md:py-4 bg-[#FDFCF8] border border-[#1A3C2F]/10 text-[#1A3C2F] rounded-xl text-xs md:text-sm font-bold uppercase tracking-widest hover:bg-[#D4AF37]/10 hover:border-[#D4AF37]/30 transition-all flex items-center justify-center gap-2 active:scale-[0.98]"
                     >
                             {isAdded ? (
                                 <>
-                                <Check size={16} /> <span className="hidden md:inline">Added</span><span className="md:hidden">Added</span>
+                                <Check size={16} className="text-green-600" /> <span className="hidden md:inline">Added to Cart</span><span className="md:hidden">Added</span>
                                 </>
                             ) : (
                                 <>
-                                <ShoppingBag size={16} /> <span className="hidden md:inline">Add to Order</span><span className="md:hidden">Add</span>
+                                <ShoppingBag size={16} /> <span className="hidden md:inline">Add to Cart</span><span className="md:hidden">Add</span>
                                 </>
                             )}
                     </button>
                     <button
                         onClick={handleEnquire}
-                        className="flex-[2] py-3 md:py-4 bg-[#1A3C2F] text-white rounded-lg md:rounded-xl text-xs md:text-sm font-bold uppercase tracking-widest hover:bg-[#142e24] transition-all flex items-center justify-center gap-2 shadow-lg shadow-[#1A3C2F]/20 group active:scale-[0.98]"
+                        className="flex-[2] py-3.5 md:py-4 bg-[#1A3C2F] text-[#FDFCF8] rounded-xl text-xs md:text-sm font-bold uppercase tracking-widest hover:bg-[#142e24] transition-all flex items-center justify-center gap-2 shadow-lg shadow-[#1A3C2F]/20 group active:scale-[0.98] border border-[#1A3C2F]"
                     >
-                    <Send size={16} className="group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" />
+                    <Send size={16} className="text-[#D4AF37] group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" />
                     Enquire Now
                     </button>
                 </div>

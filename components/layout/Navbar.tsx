@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
-import { ShoppingBag, Menu, X, ArrowRight } from "lucide-react";
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
+import { ShoppingBag, Menu, X, ArrowRight, Search, Instagram, Facebook, Phone, Flower2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useCart } from "@/context/CartContext";
 
@@ -17,17 +17,33 @@ const links = [
 export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { cartCount, setIsCartOpen } = useCart();
+  const { scrollY } = useScroll();
+  const [hidden, setHidden] = useState(false);
+
+  // Smart Scroll Logic
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const previous = scrollY.getPrevious() || 0;
+    if (latest > previous && latest > 150) {
+      setHidden(true); // Hide on scroll down
+    } else {
+      setHidden(false); // Show on scroll up
+    }
+  });
 
   return (
     <>
       <motion.nav
         className={cn(
           "fixed z-50 transition-all duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)]",
-          "top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-5xl rounded-full bg-white/70 backdrop-blur-xl border border-white/40 shadow-[0_8px_32px_rgba(0,0,0,0.04)] py-3 px-8"
+          "top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-5xl rounded-full bg-white/70 backdrop-blur-xl border border-white/40 shadow-[0_8px_32px_rgba(0,0,0,0.04)] py-3 px-5 md:px-8"
         )}
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
+        variants={{
+            visible: { y: 0, opacity: 1 },
+            hidden: { y: -100, opacity: 0 }
+        }}
+        animate={hidden ? "hidden" : "visible"}
+        initial="visible"
+        transition={{ duration: 0.35, ease: "easeInOut" }}
       >
         <div className="flex items-center justify-between w-full">
           {/* Logo */}
@@ -83,7 +99,7 @@ export function Navbar() {
             </Link>
           </div>
 
-          <div className="flex items-center gap-2 md:hidden">
+          <div className="flex items-center gap-3 md:hidden">
             <button 
                 onClick={() => setIsCartOpen(true)}
                 className="relative p-2 rounded-full hover:bg-black/5 transition-colors text-foreground"
@@ -103,37 +119,37 @@ export function Navbar() {
                 )}
                 </AnimatePresence>
             </button>
-          </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden z-50 w-10 h-10 flex items-center justify-center relative rounded-full hover:bg-black/5 transition-colors"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-             <AnimatePresence mode="wait">
-                {isMobileMenuOpen ? (
-                    <motion.div
-                        key="close"
-                        initial={{ rotate: -90, opacity: 0 }}
-                        animate={{ rotate: 0, opacity: 1 }}
-                        exit={{ rotate: 90, opacity: 0 }}
-                        transition={{ duration: 0.2 }}
-                    >
-                        <X size={24} className="text-foreground" />
-                    </motion.div>
-                ) : (
-                    <motion.div
-                        key="menu"
-                        initial={{ rotate: 90, opacity: 0 }}
-                        animate={{ rotate: 0, opacity: 1 }}
-                        exit={{ rotate: -90, opacity: 0 }}
-                        transition={{ duration: 0.2 }}
-                    >
-                         <Menu size={24} className="text-foreground" />
-                    </motion.div>
-                )}
-             </AnimatePresence>
-          </button>
+            {/* Mobile Menu Button */}
+            <button
+                className="z-50 w-10 h-10 flex items-center justify-center relative rounded-full hover:bg-black/5 transition-colors"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+                <AnimatePresence mode="wait">
+                    {isMobileMenuOpen ? (
+                        <motion.div
+                            key="close"
+                            initial={{ rotate: -90, opacity: 0 }}
+                            animate={{ rotate: 0, opacity: 1 }}
+                            exit={{ rotate: 90, opacity: 0 }}
+                            transition={{ duration: 0.2 }}
+                        >
+                            <X size={24} className="text-foreground" />
+                        </motion.div>
+                    ) : (
+                        <motion.div
+                            key="menu"
+                            initial={{ rotate: 90, opacity: 0 }}
+                            animate={{ rotate: 0, opacity: 1 }}
+                            exit={{ rotate: -90, opacity: 0 }}
+                            transition={{ duration: 0.2 }}
+                        >
+                            <Menu size={24} className="text-foreground" />
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+            </button>
+          </div>
         </div>
       </motion.nav>
 
@@ -145,9 +161,30 @@ export function Navbar() {
             animate={{ opacity: 1, backdropFilter: "blur(12px)" }}
             exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
             transition={{ duration: 0.4 }}
-            className="fixed inset-0 z-40 bg-[#1A3C2F]/95 backdrop-blur-xl flex flex-col items-center justify-center"
+            className="fixed inset-0 z-[200] bg-[#1A3C2F] flex flex-col items-center justify-center overflow-hidden"
           >
-            <nav className="flex flex-col items-center gap-8 w-full max-w-sm px-6">
+            {/* Background Pattern */}
+             <div className="absolute inset-0 opacity-10 pointer-events-none">
+                <svg width="100%" height="100%">
+                    <pattern id="menu-pattern" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+                         <circle cx="20" cy="20" r="1.5" fill="currentColor" className="text-[#d4af37]" />
+                    </pattern>
+                    <rect width="100%" height="100%" fill="url(#menu-pattern)" />
+                </svg>
+             </div>
+
+             {/* Close Button & Logo Area */}
+             <div className="absolute top-6 left-0 w-full px-8 flex justify-between items-center z-50">
+                <span className="text-white/80 font-serif tracking-widest text-sm">MENU</span>
+                <button 
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-all backdrop-blur-md"
+                >
+                   <X size={20} />
+                </button>
+             </div>
+
+            <nav className="flex flex-col items-center gap-6 w-full max-w-sm px-6 relative z-10">
               {links.map((link, index) => (
                 <motion.div
                   key={link.name}
@@ -166,6 +203,8 @@ export function Navbar() {
                 </motion.div>
               ))}
 
+              {/* Quick Actions Removed as per request */}
+
               <motion.div
                  initial={{ opacity: 0, width: 0 }}
                  animate={{ opacity: 1, width: "100px" }}
@@ -178,17 +217,27 @@ export function Navbar() {
                  animate={{ opacity: 1, y: 0 }}
                  exit={{ opacity: 0, y: 20 }}
                  transition={{ delay: 0.5, duration: 0.5 }}
+                 className="flex flex-col gap-4 items-center w-full"
               >
                   <Link 
                     href="/products"
                     onClick={() => {
                         setIsMobileMenuOpen(false);
-                        // Optional: Open cart or go to shop
                     }}
-                    className="bg-[#d4af37] text-[#1A3C2F] px-8 py-3 rounded-full font-bold uppercase tracking-widest text-sm hover:bg-white transition-colors"
+                    className="bg-[#d4af37] text-[#1A3C2F] px-10 py-3 rounded-full font-bold uppercase tracking-widest text-sm hover:bg-white transition-colors w-full text-center"
                   >
                     Shop Now
                   </Link>
+
+                  <button 
+                    onClick={() => {
+                        setIsMobileMenuOpen(false);
+                        setIsCartOpen(true);
+                    }}
+                    className="text-[#F5F5F0] border border-[#F5F5F0]/30 px-10 py-3 rounded-full font-bold uppercase tracking-widest text-sm hover:bg-white/10 transition-colors w-full text-center"
+                  >
+                    Cart ({cartCount})
+                  </button>
               </motion.div>
             </nav>
             
