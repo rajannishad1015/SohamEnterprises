@@ -20,8 +20,9 @@ export function CartDrawer() {
     if (items.length === 0) return;
 
     const now = new Date();
+    const formattedDate = `${String(now.getDate()).padStart(2, '0')}/${String(now.getMonth() + 1).padStart(2, '0')}/${now.getFullYear()}`;
     let message = "*New Order Request*\n";
-    message += `Date: ${now.toLocaleDateString()} | Time: ${now.toLocaleTimeString()}\n\n`;
+    message += `Date: ${formattedDate} | Time: ${now.toLocaleTimeString()}\n\n`;
     
     items.forEach((item, index) => {
       message += `${index + 1}. ${item.name} - Qty: ${item.quantity}\n`;

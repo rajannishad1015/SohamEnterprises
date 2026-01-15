@@ -9,10 +9,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 
 const formSchema = z.object({
-  name: z.string().min(2, "Name is required"),
-  email: z.string().email("Invalid email address"),
-  phone: z.string().min(10, "Phone number is required"),
-  message: z.string().min(10, "Message must be at least 10 characters"),
+  name: z.string().trim().min(2, "Name is required").max(100, "Name is too long").regex(/^[a-zA-Z\s]*$/, "Name can only contain letters and spaces"),
+  email: z.string().trim().email("Invalid email address").toLowerCase(),
+  phone: z.string().trim().min(10, "Phone number is required").max(15, "Phone number is too long").regex(/^\+?[0-9\s-]*$/, "Invalid phone number format"),
+  message: z.string().trim().min(10, "Message must be at least 10 characters").max(1000, "Message is too long").refine(val => !/<script|onload|onclick/i.test(val), "Invalid characters detected"),
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -33,7 +33,11 @@ export function ContactForm() {
     setIsSubmitting(true);
     // Simulate API call
     await new Promise((resolve) => setTimeout(resolve, 1500));
-    console.log(data);
+    
+    const now = new Date();
+    const formattedDate = `${String(now.getDate()).padStart(2, '0')}/${String(now.getMonth() + 1).padStart(2, '0')}/${now.getFullYear()}`;
+    
+    console.log({ ...data, date: formattedDate });
     setIsSubmitting(false);
     reset();
     toast.success("Message sent successfully!");
