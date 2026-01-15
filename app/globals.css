@@ -23,6 +23,30 @@
   border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
+.bg-ganesh-pattern {
+  background-image: url('/patterns/ganesh-pattern.png');
+  background-repeat: repeat;
+  background-size: 400px; /* Adjust size as needed */
+  opacity: 0.15; /* Increased visibility as requested */
+  pointer-events: none; /* Ensure it doesn't interfere with clicks if used as overlay */
+}
+
+.bg-lotus-pattern {
+  background-image: url('/patterns/lotus-pattern.png');
+  background-repeat: repeat;
+  background-size: 300px;
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.bg-paisley-pattern {
+  background-image: url('/patterns/paisley-pattern.png');
+  background-repeat: repeat;
+  background-size: 350px;
+  opacity: 0.1;
+  pointer-events: none;
+}
+
 .text-shadow {
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }

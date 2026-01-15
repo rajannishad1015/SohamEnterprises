@@ -20,23 +20,44 @@ export function FeaturedProducts() {
   };
 
   return (
-    <section className="py-16 lg:py-20 bg-white" id="products">
-      <div className="max-w-6xl mx-auto px-6">
+    <section className="py-8 lg:py-20 bg-white relative overflow-hidden" id="products">
+       {/* Background Pattern */}
+       <div className="absolute inset-0 bg-lotus-pattern opacity-[0.08] pointer-events-none mix-blend-multiply" />
+
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
         
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 border-b border-[#1A3C2F]/10 pb-8">
-            <div className="max-w-2xl">
-                <span className="text-[#d4af37] font-bold uppercase tracking-[0.2em] text-xs mb-4 block">
-                    Curated Collection
-                </span>
-                <h2 className="text-4xl lg:text-5xl font-serif text-[#1A3C2F]">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-8 md:mb-16 border-b border-[#1A3C2F]/10 pb-8">
+            <motion.div 
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="max-w-2xl relative"
+            >
+                <div className="flex items-center gap-3 mb-4 relative z-10">
+                    <span className="h-[1px] w-8 bg-[#d4af37]"></span>
+                     <span className="text-[#d4af37] font-bold uppercase tracking-[0.2em] text-xs block">
+                        Curated Collection
+                    </span>
+                    <span className="h-[1px] w-8 bg-[#d4af37]"></span>
+                </div>
+               
+                <h2 className="text-4xl lg:text-5xl font-serif text-[#1A3C2F] relative inline-block z-10">
                     Signature Extracts
                 </h2>
-            </div>
-            <Link href="/products" className="group flex items-center gap-2 text-[#1A3C2F] text-sm font-bold uppercase tracking-widest hover:text-[#d4af37] transition-colors">
-                View All Products
-                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-            </Link>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+                <Link href="/products" className="group flex items-center gap-2 text-[#1A3C2F] text-sm font-bold uppercase tracking-widest hover:text-[#d4af37] transition-colors">
+                    View All Products
+                    <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                </Link>
+            </motion.div>
         </div>
 
         {/* Product Grid */}

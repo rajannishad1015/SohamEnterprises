@@ -43,6 +43,9 @@ export function Benefits() {
   return (
     <section className="py-16 lg:py-20 bg-[#F5F5F0] relative overflow-hidden" id="benefits">
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+          {/* Paisley Pattern Background */}
+          <div className="absolute inset-0 bg-paisley-pattern opacity-40 mix-blend-multiply" />
+          
           {/* Large Gradient Blobs */}
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#1A3C2F]/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2" />
           <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#d4af37]/5 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2" />

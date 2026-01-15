@@ -9,8 +9,11 @@ export function Footer() {
   };
 
   return (
-    <footer className="relative bg-white text-[#1A1A1A] font-sans border-t border-black/5">
-      <div className="flex flex-col lg:flex-row min-h-[600px]">
+    <footer className="relative bg-white text-[#1A1A1A] font-sans border-t border-black/5 overflow-hidden">
+      {/* Pattern Background */}
+       <div className="absolute inset-0 bg-ganesh-pattern opacity-10 z-0 pointer-events-none" />
+
+      <div className="flex flex-col lg:flex-row min-h-[600px] relative z-10">
         
         {/* Left Side: Immersive Map (50% on large screens) */}
         <div className="w-full lg:w-1/2 h-[400px] lg:h-auto relative bg-[#F0F0F0] order-2 lg:order-1 group">

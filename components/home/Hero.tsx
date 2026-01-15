@@ -6,9 +6,12 @@ import Image from "next/image";
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col lg:flex-row bg-[#fdfcf8]">
+    <section className="relative lg:min-h-screen flex flex-col lg:flex-row bg-[#fdfcf8] overflow-hidden">
+      {/* Pattern Overlay */}
+      <div className="absolute inset-0 bg-ganesh-pattern opacity-100 mix-blend-multiply z-0" />
+      
       {/* LEFT CONTENT SIDE */}
-      <div className="w-full lg:w-1/2 flex items-center justify-center p-6 lg:p-12 xl:p-20 pt-32 lg:pt-20 relative z-10">
+      <div className="w-full lg:w-[55%] flex items-center justify-start p-6 lg:p-12 xl:p-20 pt-32 lg:pt-28 relative z-10">
         <div className="max-w-xl text-left">
           
           <motion.div
@@ -98,6 +101,15 @@ export function Hero() {
                 className="object-cover"
                 priority
             />
+            {/* Divine Ganesh Pattern Overlay */}
+            <div className="absolute inset-0 z-10 opacity-20 pointer-events-none mix-blend-overlay" 
+                 style={{ 
+                     backgroundImage: "url('/patterns/ganesh-pattern.png')",
+                     backgroundRepeat: "repeat",
+                     backgroundSize: "300px"
+                 }}
+            />
+
              {/* Gradient Overlay for better blend on mobile */}
              <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#fdfcf8] to-transparent lg:hidden" />
         </motion.div>
@@ -138,7 +150,7 @@ export function Hero() {
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.2, duration: 0.8 }}
-        className="relative lg:absolute lg:bottom-0 left-0 w-full z-40 bg-[#d4af37] text-[#1A3C2F] py-3 mt-12 lg:mt-0 shadow-[-10px_-10px_30px_rgba(0,0,0,0.1)]"
+        className="relative lg:absolute lg:bottom-0 left-0 w-full z-40 bg-[#d4af37] text-[#1A3C2F] py-3 mt-0 lg:mt-0 shadow-[-10px_-10px_30px_rgba(0,0,0,0.1)]"
       >
           <div className="max-w-6xl mx-auto px-6">
               <div className="grid grid-cols-3 md:flex md:justify-center md:items-center gap-4 md:gap-12 xl:gap-24 text-center md:divide-x divide-[#1A3C2F]/10">
