@@ -64,7 +64,7 @@ export function Footer() {
                     </div>
 
                     {/* Links Grid - Responsive Cols */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-10 gap-x-4 lg:gap-8 mb-10 lg:mb-12">
+                    <div className="grid grid-cols-3 gap-x-2 gap-y-8 lg:gap-8 mb-8 lg:mb-12">
                         <div>
                             <h4 className="flex items-center gap-2 font-bold uppercase text-[10px] tracking-[0.2em] mb-4 lg:mb-6 text-[#d4af37]/80">
                                 <span className="h-[1px] w-4 bg-[#d4af37]/50"></span> Explore
@@ -76,7 +76,7 @@ export function Footer() {
                                 <li><Link href="/about" className="hover:text-[#d4af37] hover:pl-2 transition-all duration-300 block">Our Story</Link></li>
                             </ul>
                         </div>
-                        <div className="col-span-2 md:col-span-1">
+                        <div className="col-span-1">
                             <h4 className="flex items-center gap-2 font-bold uppercase text-[10px] tracking-[0.2em] mb-4 lg:mb-6 text-[#d4af37]/80">
                                 <span className="h-[1px] w-4 bg-[#d4af37]/50"></span> Contact
                             </h4>
@@ -87,7 +87,7 @@ export function Footer() {
                                             <Mail size={14} className="text-[#d4af37]"/> 
                                             <span className="active:scale-95 transition-transform">Sales Inquiry</span>
                                         </div>
-                                        <span className="text-xs text-white/50 pl-6 group-hover:text-white/80 transition-colors">sales@sohamenterprise.com</span>
+                                        <span className="hidden sm:block text-xs text-white/50 pl-6 group-hover:text-white/80 transition-colors">sales@sohamenterprise.com</span>
                                     </a>
                                 </li>
                                 <li>
@@ -96,7 +96,7 @@ export function Footer() {
                                             <Phone size={14} className="text-[#d4af37]"/> 
                                             <span className="active:scale-95 transition-transform">Call Us</span>
                                         </div>
-                                        <span className="text-xs text-white/50 pl-6 group-hover:text-white/80 transition-colors">+91 99302 82855</span>
+                                        <span className="hidden sm:block text-xs text-white/50 pl-6 group-hover:text-white/80 transition-colors">+91 99302 82855</span>
                                     </a>
                                 </li>
                             </ul>

@@ -102,7 +102,6 @@ export function Hero() {
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover"
-                priority
             />
             {/* Divine Ganesh Pattern Overlay */}
             <div className="absolute inset-0 z-10 opacity-20 pointer-events-none mix-blend-overlay" 

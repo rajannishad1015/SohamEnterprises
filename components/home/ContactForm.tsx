@@ -45,13 +45,13 @@ export function ContactForm() {
 
   return (
     <div className="w-full h-full flex flex-col justify-center">
-      <div className="mb-6 lg:mb-10">
-        <h3 className="text-xl lg:text-2xl font-serif text-white mb-2">Send us a Message</h3>
-        <p className="text-white/60 text-xs lg:text-sm font-light">We'll get back to you within 24 hours.</p>
+      <div className="mb-4 lg:mb-10">
+        <h3 className="text-lg lg:text-2xl font-serif text-white mb-1.5 lg:mb-2">Send us a Message</h3>
+        <p className="text-white/60 text-[10px] lg:text-sm font-light">We'll get back to you within 24 hours.</p>
       </div>
 
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-5 lg:space-y-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-8">
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-3 lg:space-y-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 lg:gap-8">
           <UnderlineInput
             label="Full Name"
             {...register("name")}
@@ -72,16 +72,16 @@ export function ContactForm() {
           error={errors.phone?.message}
         />
 
-        <div className="relative group pt-2 lg:pt-4">
+        <div className="relative group pt-1 lg:pt-4">
           <textarea
             {...register("message")}
             placeholder=" "
-            rows={4}
-            className={`peer w-full bg-transparent border-b border-white/20 text-white placeholder-transparent focus:outline-none focus:border-[#d4af37] transition-all resize-none py-2 text-sm lg:text-base ${
+            rows={3}
+            className={`peer w-full bg-transparent border-b border-white/20 text-white placeholder-transparent focus:outline-none focus:border-[#d4af37] transition-all resize-none py-1.5 lg:py-2 text-sm lg:text-base ${
               errors.message ? "border-red-500" : ""
             }`}
           />
-          <label className="absolute left-0 top-2 text-xs lg:text-sm text-white/50 transition-all peer-placeholder-shown:text-sm lg:peer-placeholder-shown:text-base peer-placeholder-shown:text-white/50 peer-placeholder-shown:top-4 peer-focus:-top-2 peer-focus:text-[10px] lg:peer-focus:text-xs peer-focus:text-[#d4af37]">
+          <label className="absolute left-0 top-1 lg:top-2 text-[10px] lg:text-sm text-white/50 transition-all peer-placeholder-shown:text-sm lg:peer-placeholder-shown:text-base peer-placeholder-shown:text-white/50 peer-placeholder-shown:top-3 lg:peer-placeholder-shown:top-4 peer-focus:-top-1.5 lg:peer-focus:-top-2 peer-focus:text-[9px] lg:peer-focus:text-xs peer-focus:text-[#d4af37]">
             Tell us about your needs
           </label>
           {errors.message && (
@@ -94,7 +94,7 @@ export function ContactForm() {
           whileTap={{ scale: 0.98 }}
           disabled={isSubmitting}
           type="submit"
-          className="w-full bg-[#d4af37] text-[#1A3C2F] py-3 lg:py-4 rounded-xl font-bold uppercase tracking-widest hover:bg-[#eace6e] transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed mt-2 lg:mt-4 shadow-lg shadow-[#d4af37]/10 text-sm lg:text-base"
+          className="w-full bg-[#d4af37] text-[#1A3C2F] py-2.5 lg:py-4 rounded-xl font-bold uppercase tracking-widest hover:bg-[#eace6e] transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed mt-1 lg:mt-4 shadow-lg shadow-[#d4af37]/10 text-xs lg:text-base"
         >
           {isSubmitting ? (
             <Loader2 className="animate-spin" size={20} />
@@ -111,16 +111,16 @@ export function ContactForm() {
 
 function UnderlineInput({ label, error, type = "text", ...props }: any) {
   return (
-    <div className="relative group pt-4">
+    <div className="relative group pt-2 lg:pt-4">
       <input
         type={type}
         placeholder=" "
-        className={`peer w-full bg-transparent border-b border-white/20 text-white placeholder-transparent focus:outline-none focus:border-[#d4af37] transition-all py-2 text-base ${
+        className={`peer w-full bg-transparent border-b border-white/20 text-white placeholder-transparent focus:outline-none focus:border-[#d4af37] transition-all py-1.5 lg:py-2 text-sm lg:text-base ${
           error ? "border-red-500" : ""
         }`}
         {...props}
       />
-      <label className="absolute left-0 top-2 text-sm text-white/50 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-white/50 peer-placeholder-shown:top-4 peer-focus:-top-2 peer-focus:text-xs peer-focus:text-[#d4af37]">
+      <label className="absolute left-0 top-1 lg:top-2 text-[10px] lg:text-sm text-white/50 transition-all peer-placeholder-shown:text-sm lg:peer-placeholder-shown:text-base peer-placeholder-shown:text-white/50 peer-placeholder-shown:top-3 lg:peer-placeholder-shown:top-4 peer-focus:-top-1.5 lg:peer-focus:-top-2 peer-focus:text-[9px] lg:peer-focus:text-xs peer-focus:text-[#d4af37]">
         {label}
       </label>
       {error && <span className="text-red-400 text-xs mt-1 block">{error}</span>}
