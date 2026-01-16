@@ -14,8 +14,8 @@ export interface Product {
 export const products: Product[] = [
     { name: "Apricot Oil", rate: "850/-", image: "/images/products/apricot-oil.jpg" },
     { name: "Anethol", rate: "1450/-", image: "/images/products/anethol.jpg" },
-    { name: "Ajowain Oil", rate: "950/1800" },
-    { name: "Almond Oil 5%", rate: "450/-" },
+    { name: "Ajowain Oil", rate: "950/1800", image: "/images/products/ajowain-oil.jpg" },
+    { name: "Almond Oil 5%", rate: "450/-", image: "/images/products/almond-oil.jpg" },
     { name: "Avocado Oil", rate: "1200/-" },
     { name: "Anise Oil", rate: "1400/-" },
     { name: "Argan Oil", rate: "3100/-" },

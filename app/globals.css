@@ -47,6 +47,14 @@
   pointer-events: none;
 }
 
+.bg-ganesh-pattern-royal {
+  background-image: url("/patterns/ganesh-pattern-royal.png");
+  background-repeat: repeat;
+  background-size: 500px;
+  opacity: 0.08;
+  pointer-events: none;
+}
+
 .text-shadow {
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -62,4 +70,14 @@ body {
   background-color: var(--color-background);
   color: var(--color-foreground);
   overflow-x: hidden;
+}
+
+/* Scrollbar Hide Utilities */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
