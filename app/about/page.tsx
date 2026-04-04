@@ -1,7 +1,5 @@
 "use client";
 
-import { Navbar } from "@/components/layout/Navbar";
-import { Footer } from "@/components/layout/Footer";
 import { motion } from "framer-motion";
 import { useRef, useEffect } from "react";
 
@@ -37,7 +35,6 @@ export default function AboutPage() {
 
   return (
     <main className="min-h-screen bg-white">
-      <Navbar />
       
       {/* Hero Section with Indian Patterns */}
       <section className="relative h-screen flex items-center justify-center bg-gradient-to-br from-[#1a3c2f] via-[#0f2419] to-[#1a3c2f] overflow-hidden">
@@ -278,8 +275,6 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-
-      <Footer />
     </main>
   );
 }

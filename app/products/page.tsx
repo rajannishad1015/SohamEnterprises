@@ -1,5 +1,3 @@
-import { Navbar } from "@/components/layout/Navbar";
-import { Footer } from "@/components/layout/Footer";
 import { ProductGrid } from "@/components/products/ProductGrid";
 import { Metadata } from "next";
 import { ProductSchema } from "@/components/seo/ProductSchema";
@@ -17,11 +15,7 @@ export default function ProductsPage() {
   return (
     <main className="min-h-screen bg-[#fdfcf8] font-sans text-foreground">
       <ProductSchema products={products} />
-      <Navbar />
-      <div className="pt-20"> {/* Add padding top to account for fixed navbar */}
-         <ProductGrid />
-      </div>
-      <Footer />
+      <ProductGrid />
     </main>
   );
 }
