@@ -11,7 +11,7 @@ export const OrganizationSchema = () => {
     "description": "Premium global suppliers of essential oils, natural extracts, and industrial chemical compounds.",
     "contactPoint": {
       "@type": "ContactPoint",
-      "telephone": "+91-XXXXXXXXXX",
+      "telephone": "+919137450702",
       "contactType": "customer service",
       "areaServed": "IN",
       "availableLanguage": ["en", "Hindi"]

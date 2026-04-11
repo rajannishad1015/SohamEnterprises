@@ -4,7 +4,7 @@ import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronLeft, ShoppingBag, Leaf, Sparkles, Check, Phone } from "lucide-react";
-import { ProductSchema } from "@/components/seo/ProductSchema"; // I'll need to create or move this
+// Removed unused ProductSchema import
 
 export async function generateStaticParams() {
   return products.map((product) => ({
@@ -76,6 +76,36 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               "lowPrice": product.rate.split('/')[0].replace(/[^0-9]/g, ''),
               "availability": "https://schema.org/InStock"
             }
+          }),
+        }}
+      />
+      {/* Breadcrumb Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org/",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://sohamenterprises.vercel.app/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Products",
+                "item": "https://sohamenterprises.vercel.app/products"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": product.name,
+                "item": `https://sohamenterprises.vercel.app/products/${getSlug(product.name)}`
+              }
+            ]
           }),
         }}
       />
