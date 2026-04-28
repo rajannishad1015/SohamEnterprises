@@ -23,8 +23,8 @@ export default function Home() {
           addressCountry: 'IN',
         }}
         geo={{
-          latitude: '18.948604',
-          longitude: '72.828613',
+          latitude: 18.948604,
+          longitude: 72.828613,
         }}
         images={[
           'https://sohamenterprises.vercel.app/logo.png',
