@@ -32,7 +32,7 @@ export function ProductList() {
              viewport={{ once: true }}
              className="text-secondary font-bold uppercase tracking-[0.2em] text-xs block mb-4"
           >
-            Wholesale Price List
+            Product Catalog
           </motion.span>
           <motion.h2 
             initial={{ opacity: 0, y: 10 }}
@@ -50,7 +50,7 @@ export function ProductList() {
              transition={{ delay: 0.2 }}
              className="text-muted-foreground"
           >
-            Search through our extensive range of premium organic oils and extracts. Prices are subject to market fluctuations.
+            Search through our extensive range of premium organic oils and extracts.
           </motion.p>
         </div>
 
@@ -77,8 +77,7 @@ export function ProductList() {
                 <table className="w-full text-left">
                     <thead className="bg-primary text-white">
                         <tr>
-                            <th className="px-8 py-5 font-serif text-lg font-normal tracking-wide w-2/3">Item Name</th>
-                            <th className="px-8 py-5 font-serif text-lg font-normal tracking-wide w-1/3 text-right">Rate (₹)</th>
+                            <th className="px-8 py-5 font-serif text-lg font-normal tracking-wide w-full">Item Name</th>
                         </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-100">
@@ -94,9 +93,6 @@ export function ProductList() {
                                 >
                                     <td className="px-8 py-4 text-primary font-medium group-hover:text-secondary transition-colors">
                                         {product.name}
-                                    </td>
-                                    <td className="px-8 py-4 text-right text-muted-foreground font-mono">
-                                        {product.rate}
                                     </td>
                                 </motion.tr>
                             ))
@@ -121,7 +117,7 @@ export function ProductList() {
 
         <div className="mt-12 text-center">
              <button className="inline-flex items-center gap-2 px-8 py-3 bg-secondary text-white rounded-full font-bold uppercase tracking-widest text-xs hover:bg-secondary/90 transition-all shadow-lg hover:shadow-secondary/30">
-                <Download size={16} /> Download Full Price List
+                <Download size={16} /> Download Full Catalog
              </button>
         </div>
 

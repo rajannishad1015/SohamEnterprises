@@ -3,8 +3,8 @@
 Soham Enterprise is a premium global supplier of high-purity essential oils, natural extracts, and industrial chemical compounds. We serve pharmaceutical, cosmetic, and food industries with ethically sourced, lab-tested natural ingredients.
 
 ## Contact Information
-- **Phone**: +91-XXX-XXXX-XXX
-- **Email**: info@sohamenterprises.com
+- **Phone**: +91 99302 82855 / +91 99309 96570
+- **Email**: sohamessentialoilsofficial@gmail.com
 - **Website**: https://sohamenterprises.vercel.app
 
 ## Key Products
@@ -13,7 +13,7 @@ Soham Enterprise is a premium global supplier of high-purity essential oils, nat
 3. **Chemical Compounds**: High-grade industrial and pharmaceutical raw materials.
 
 ## Pricing & Catalog
-The full catalog of over 60+ products with live rates is available at https://sohamenterprises.vercel.app/products.
+The full catalog of over 60+ products is available at https://sohamenterprises.vercel.app/products.
 Items are categorized into:
 - Premium Oils
 - Industrial Chemicals

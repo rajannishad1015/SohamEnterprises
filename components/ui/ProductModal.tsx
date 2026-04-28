@@ -46,10 +46,10 @@ export function ProductModal({ product, isOpen, onClose, relatedProducts = [], o
   // Determine display values based on available data
   const displayName = product.name;
   const displayCategory = product.category || "Premium Quality";
-  const displayPrice = product.price || product.rate || "Contact for Price";
+  const displayPrice = product.price || "Contact for Price";
   const displayDescription = product.description || `Experience the finest quality ${product.name}. Carefully sourced and processed to ensure maximum purity and potency. Ideal for pharmaceutical, cosmetic, and therapeutic applications. Contact us for bulk orders and synthesis reports.`;
   const displayImage = product.image || "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?q=80&w=2574&auto=format&fit=crop"; // Abstract texture placeholder
-  const displayTags = product.tags || ["Premium", "Organic", "Wholesale"];
+  const displayTags = product.tags || ["Premium", "Organic", "Certified"];
 
   const handleEnquire = () => {
     const message = `Hi, I am interested in ${displayName}. Please provide more details.`;
@@ -199,11 +199,7 @@ export function ProductModal({ product, isOpen, onClose, relatedProducts = [], o
                                         {displayDescription}
                                     </p>
                                     <div>
-                                        <h3 className="text-xs md:text-sm font-bold text-[#1A3C2F] uppercase tracking-wide mb-1 md:mb-2 opacity-80">Pricing Model</h3>
-                                        <p className="text-xl md:text-2xl font-serif text-[#1A3C2F]">
-                                            {displayPrice} <span className="text-sm md:text-base text-gray-400 font-sans font-normal">/ unit</span>
-                                        </p>
-                                        <p className="text-[10px] md:text-xs text-gray-400 mt-1">*Prices subject to market fluctuation.</p>
+
                                     </div>
                                 </motion.div>
                             ) : (
@@ -262,7 +258,7 @@ export function ProductModal({ product, isOpen, onClose, relatedProducts = [], o
                                              )}
                                          </div>
                                          <p className="text-[10px] md:text-xs font-bold text-gray-700 truncate group-hover:text-[#1A3C2F] transition-colors">{rp.name}</p>
-                                         <p className="text-[9px] md:text-[10px] text-gray-400">{rp.rate || "Enquire"}</p>
+                                         <p className="text-[9px] md:text-[10px] text-gray-400">Enquire</p>
                                      </button>
                                  ))}
                              </div>

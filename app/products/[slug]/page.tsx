@@ -22,8 +22,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     };
   }
 
-  const title = `Pure ${product.name} Essential Oil - High Quality Wholesale | Soham Enterprise`;
-  const description = product.description || `Buy 100% pure and premium ${product.name} Essential Oil at wholesale prices from Soham Enterprise. Best quality for pharmaceutical, cosmetic, and fragrance industries.`;
+  const title = `Pure ${product.name} Essential Oil - High Quality | Soham Enterprise`;
+  const description = product.description || `Buy 100% pure and premium ${product.name} Essential Oil from Soham Enterprise. Best quality for pharmaceutical, cosmetic, and fragrance industries.`;
 
   return {
     title,
@@ -65,7 +65,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             "@type": "Product",
             "name": `Pure ${product.name} Essential Oil`,
             "image": product.image ? [`https://sohamenterprises.vercel.app${product.image}`] : [],
-            "description": product.description || `100% Pure and Natural ${product.name} Essential Oil. Premium wholesale quality for diverse industrial applications.`,
+            "description": product.description || `100% Pure and Natural ${product.name} Essential Oil. Premium quality for diverse industrial applications.`,
             "brand": {
               "@type": "Brand",
               "name": "Soham Enterprise"
@@ -73,7 +73,6 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             "offers": {
               "@type": "AggregateOffer",
               "priceCurrency": "INR",
-              "lowPrice": product.rate.split('/')[0].replace(/[^0-9]/g, ''),
               "availability": "https://schema.org/InStock"
             }
           }),
@@ -157,11 +156,6 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                </h1>
                <div className="flex items-center gap-4 mb-8 pb-8 border-b border-stone-100">
                   <div className="flex flex-col">
-                     <span className="text-[10px] text-stone-400 uppercase tracking-widest mb-1">Wholesale Rate</span>
-                     <span className="text-3xl font-bold text-primary">₹{product.rate}</span>
-                  </div>
-                  <div className="h-10 w-px bg-stone-100 mx-2" />
-                  <div className="flex flex-col">
                      <span className="text-[10px] text-stone-400 uppercase tracking-widest mb-1">Grade</span>
                      <span className="text-sm font-bold text-stone-600 uppercase tracking-wider">Premium Pharma</span>
                   </div>
@@ -177,7 +171,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                      {[
                         "100% Pure & Natural",
                         "GC/MS Tested Quality",
-                        "Wholesale Distribution",
+                        "Premium Quality",
                         "Bulk Packaging Available",
                         "Custom Formulations",
                         "Global Export Grade"
@@ -216,7 +210,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                   <ShoppingBag size={18} /> Add to Order
                </button>
                <Link 
-                  href="https://wa.me/919137450702" 
+                  href="https://wa.me/919930282855" 
                   className="bg-white border-2 border-stone-900 text-stone-900 py-5 px-8 rounded-xl font-bold uppercase tracking-widest text-xs hover:border-[#D4AF37] hover:text-[#D4AF37] transition-all flex items-center justify-center gap-3 active:scale-95"
                >
                   <Phone size={18} /> Direct Inquiry

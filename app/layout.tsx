@@ -28,8 +28,8 @@ export const metadata: Metadata = {
     default: "Soham Enterprise | Premium Essential Oils & Natural Compounds",
     template: "%s | Soham Enterprise"
   },
-  description: "Global suppliers of high-quality essential oils, wholesale chemicals, and natural extracts. Trusted quality for pharmaceutical and cosmetic industries.",
-  keywords: ["Essential Oils", "Natural Extracts", "Wholesale Chemicals", "Pharmaceutical Formulations", "Cosmetic Raw Materials", "Soham Enterprise", "Indian Essential Oil Suppliers"],
+  description: "Global suppliers of high-quality essential oils, industrial chemicals, and natural extracts. Trusted quality for pharmaceutical and cosmetic industries.",
+  keywords: ["Essential Oils", "Natural Extracts", "Industrial Chemicals", "Pharmaceutical Formulations", "Cosmetic Raw Materials", "Soham Enterprise", "Indian Essential Oil Suppliers"],
   authors: [{ name: "Soham Enterprise" }],
   creator: "Soham Enterprise",
   publisher: "Soham Enterprise",
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Soham Enterprise | Pure Natural Ingredients",
-    description: "Wholesale suppliers of premium essential oils and extracts.",
+    description: "Global suppliers of premium essential oils and extracts.",
     images: ["/logo.png"],
   },
   verification: {

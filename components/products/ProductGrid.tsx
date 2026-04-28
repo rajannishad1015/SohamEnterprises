@@ -48,7 +48,7 @@ const ProductImage = ({ product }: { product: Product }) => {
     addToCart({
         id: product.name,
         name: product.name,
-        price: product.rate || "Contact for Price",
+        price: "Contact for Price",
         image: product.image,
         category: "Premium" // Default or derived
     });
@@ -117,7 +117,7 @@ const ProductCard = ({ product, onClick }: { product: Product; onClick: (product
     addToCart({
       id: product.name,
       name: product.name,
-      price: product.rate || "Contact for Price",
+      price: "Contact for Price",
       image: product.image,
       category: "Premium",
     });
@@ -171,12 +171,6 @@ const ProductCard = ({ product, onClick }: { product: Product; onClick: (product
         </div>
 
         <div className="mt-auto w-full">
-          <p className="text-[10px] md:text-xs text-stone-400 uppercase tracking-widest mb-0.5 md:mb-1">
-            Wholesale
-          </p>
-          <p className="font-mono text-sm md:text-xl font-bold text-primary mb-2 md:mb-4">
-            ₹{product.rate || "N/A"}
-          </p>
 
           <button
             onClick={handleAddToCart}
@@ -263,15 +257,6 @@ export function ProductGrid() {
     }
   };
 
-  // Helper to safely parse price for display calculation
-  const getSafePrice = (rate: string) => {
-    try {
-        const num = parseInt((rate || "0").split('/')[0]);
-        return isNaN(num) ? 0 : num;
-    } catch (e) {
-        return 0;
-    }
-  };
 
   // Animation Variants
   const containerVariants = {
@@ -514,8 +499,6 @@ export function ProductGrid() {
 
                                 <div className="mt-auto flex items-center justify-between">
                                     <div>
-                                        <span className="text-[10px] text-stone-400 uppercase tracking-wider block">Wholesale</span>
-                                        <span className="text-lg font-bold text-primary">₹{product.rate || "N/A"}</span>
                                     </div>
                                     <button className="px-4 py-2 rounded-none bg-[#1a1a1a] text-white text-xs font-bold uppercase tracking-wider shadow-lg shadow-stone-200 group-hover:bg-[#D4AF37] transition-all hover:scale-105 active:scale-95 flex items-center gap-2">
                                         <ShoppingBag size={14} /> Add

@@ -108,9 +108,6 @@ export function FeaturedProducts() {
                              <span className="text-[10px] md:text-xs text-[#1A3C2F]/50 uppercase tracking-wider font-medium">
                                 {product.category || "Essential Oil"}
                             </span>
-                            <span className="text-sm md:text-base text-[#1A3C2F] font-bold">
-                                {product.rate}
-                            </span>
                         </div>
                     </div>
                 </motion.div>

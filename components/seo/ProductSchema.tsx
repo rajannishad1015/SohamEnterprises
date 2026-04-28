@@ -20,12 +20,6 @@ export const ProductSchema: React.FC<ProductSchemaProps> = ({ products }) => {
         "name": product.name,
         "description": `Pure ${product.name} extracted for quality excellence.`,
         "image": `https://sohamenterprises.vercel.app${product.image || '/images/products/placeholder.jpg'}`,
-        "offers": {
-          "@type": "Offer",
-          "priceCurrency": "INR",
-          "price": product.rate ? parseFloat(product.rate.replace(/[^0-9.]/g, '')) : "0.00",
-          "availability": "https://schema.org/InStock"
-        },
         "brand": {
           "@type": "Brand",
           "name": "Soham Enterprise"

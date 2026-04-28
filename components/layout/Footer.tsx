@@ -82,21 +82,21 @@ export function Footer() {
                             </h4>
                             <ul className="space-y-3 text-sm font-light text-white/70">
                                 <li>
-                                    <a href="mailto:sales@sohamenterprise.com" className="hover:text-[#d4af37] transition-all duration-300 block group">
+                                    <a href="mailto:sohamessentialoilsofficial@gmail.com" className="hover:text-[#d4af37] transition-all duration-300 block group">
                                         <div className="flex items-center gap-2 mb-1 text-white/90">
                                             <Mail size={14} className="text-[#d4af37]"/> 
                                             <span className="active:scale-95 transition-transform">Sales Inquiry</span>
                                         </div>
-                                        <span className="hidden sm:block text-xs text-white/50 pl-6 group-hover:text-white/80 transition-colors">sales@sohamenterprise.com</span>
+                                        <span className="hidden sm:block text-[10px] text-white/50 pl-6 group-hover:text-white/80 transition-colors">sohamessentialoilsofficial@gmail.com</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="tel:+919930282855" className="hover:text-[#d4af37] transition-all duration-300 block group">
+                                    <a href="tel:+919930996570" className="hover:text-[#d4af37] transition-all duration-300 block group">
                                         <div className="flex items-center gap-2 mb-1 text-white/90">
                                             <Phone size={14} className="text-[#d4af37]"/> 
                                             <span className="active:scale-95 transition-transform">Call Us</span>
                                         </div>
-                                        <span className="hidden sm:block text-xs text-white/50 pl-6 group-hover:text-white/80 transition-colors">+91 99302 82855</span>
+                                        <span className="hidden sm:block text-[10px] text-white/50 pl-6 group-hover:text-white/80 transition-colors">+91 99309 96570</span>
                                     </a>
                                 </li>
                             </ul>

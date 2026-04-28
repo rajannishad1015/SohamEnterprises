@@ -98,7 +98,7 @@ export function Hero() {
         >
             <Image
                 src="/hero-bg.png"
-                alt="Soham Enterprise Premium Wholesale Essential Oils - Organic Distillery"
+                alt="Soham Enterprise Premium Essential Oils - Organic Distillery"
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover"

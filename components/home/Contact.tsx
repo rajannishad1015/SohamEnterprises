@@ -60,9 +60,9 @@ export function Contact() {
                         transition={{ delay: 0.3 }}
                         className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-4 lg:gap-8"
                     >
-                        <ContactRow icon={MapPin} text="Gujarat, India" />
-                        <ContactRow icon={Mail} text="info@sohamenterprise.com" />
-                        <ContactRow icon={Phone} text="+91 99302 82855" />
+                        <ContactRow icon={MapPin} text="Mumbai, Maharashtra" />
+                        <ContactRow icon={Mail} text="sohamessentialoilsofficial@gmail.com" />
+                        <ContactRow icon={Phone} text="+91 99309 96570 / +91 99302 82855" />
                     </motion.div>
 
                     {/* Decorative Mandala - Hidden on mobile to save space */}
