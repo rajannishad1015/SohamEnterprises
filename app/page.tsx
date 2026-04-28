@@ -8,9 +8,7 @@ export default function Home() {
   return (
     <main className="min-h-screen">
       <LocalBusinessJsonLd
-        useAppDir={true}
         type="Store"
-        id="https://sohamenterprises.vercel.app/#local-business"
         name="Soham Enterprise"
         description="Premium global suppliers of essential oils, natural extracts, and industrial chemical compounds."
         url="https://sohamenterprises.vercel.app"
@@ -26,25 +24,9 @@ export default function Home() {
           latitude: 18.948604,
           longitude: 72.828613,
         }}
-        images={[
+        image={[
           'https://sohamenterprises.vercel.app/logo.png',
           'https://sohamenterprises.vercel.app/hero-bg.png'
-        ]}
-        openingHours={[
-          {
-            opens: '09:00',
-            closes: '18:00',
-            dayOfWeek: [
-              'Monday',
-              'Tuesday',
-              'Wednesday',
-              'Thursday',
-              'Friday',
-              'Saturday'
-            ],
-            validFrom: '2024-01-01',
-            validThrough: '2030-12-31',
-          }
         ]}
       />
       <Hero />
