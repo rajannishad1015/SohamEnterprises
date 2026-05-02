@@ -28,6 +28,15 @@ export function Hero() {
           </motion.div>
 
 
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.15 }}
+            className="mb-3 mt-12 text-primary font-medium tracking-wider text-lg lg:text-xl"
+          >
+            - Essential Oil Supplier
+          </motion.div>
+
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
