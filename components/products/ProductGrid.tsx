@@ -7,7 +7,7 @@ import { products, Product, getSlug } from "@/lib/products";
 import Link from "next/link";
 import { ProductModal } from "@/components/ui/ProductModal";
 import { useCart } from "@/context/CartContext";
-import { ShoppingBag, Check, Flower2 } from "lucide-react";
+import { ShoppingBag, Check, Flower2, Send } from "lucide-react";
 
 // --- Custom Modern-Indian Assets ---
 
@@ -45,15 +45,9 @@ const ProductImage = ({ product }: { product: Product }) => {
 
   const handleQuickAdd = (e: React.MouseEvent) => {
     e.stopPropagation();
-    addToCart({
-        id: product.name,
-        name: product.name,
-        price: "Contact for Price",
-        image: product.image,
-        category: "Premium" // Default or derived
-    });
-    setIsAdded(true);
-    setTimeout(() => setIsAdded(false), 2000);
+    const message = `Hi, I would like to order: ${product.name}. Please provide more details.`;
+    const whatsappUrl = `https://wa.me/919930282855?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
   };
 
   return (
@@ -100,9 +94,9 @@ const ProductImage = ({ product }: { product: Product }) => {
          initial={{ opacity: 0, y: 10 }}
          whileHover={{ opacity: 1, y: 0, scale: 1.1 }}
          onClick={handleQuickAdd}
-         className={`absolute bottom-3 right-3 p-2 rounded-full shadow-lg transition-all border border-stone-100 flex items-center justify-center z-20 ${isAdded ? 'bg-green-500 text-white border-green-500' : 'bg-white text-primary hover:bg-primary hover:text-white'}`}
+         className="absolute bottom-3 right-3 p-2 rounded-full shadow-lg transition-all border border-stone-100 flex items-center justify-center z-20 bg-[#25D366] text-white hover:bg-[#128C7E]"
       >
-          {isAdded ? <Check size={16} /> : <ShoppingBag size={16} />}
+          <Send size={16} />
       </motion.button>
     </div>
   );
@@ -114,15 +108,9 @@ const ProductCard = ({ product, onClick }: { product: Product; onClick: (product
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.stopPropagation();
-    addToCart({
-      id: product.name,
-      name: product.name,
-      price: "Contact for Price",
-      image: product.image,
-      category: "Premium",
-    });
-    setIsAdded(true);
-    setTimeout(() => setIsAdded(false), 2000);
+    const message = `Hi, I would like to order: ${product.name}. Please provide more details.`;
+    const whatsappUrl = `https://wa.me/919930282855?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
   };
 
   const itemVariants = {
@@ -174,21 +162,9 @@ const ProductCard = ({ product, onClick }: { product: Product; onClick: (product
 
           <button
             onClick={handleAddToCart}
-            className={`w-full py-2 md:py-3 px-2 rounded-lg md:rounded-xl text-[10px] md:text-sm font-bold uppercase tracking-wide transition-all flex items-center justify-center gap-1.5 whitespace-nowrap overflow-hidden ${
-              isAdded
-                ? "bg-green-500 text-white shadow-green-200"
-                : "bg-stone-900 text-white hover:bg-[#D4AF37] hover:shadow-lg shadow-stone-200 font-serif tracking-widest"
-            }`}
+            className="w-full py-2 md:py-3 px-2 rounded-lg md:rounded-xl text-[10px] md:text-sm font-bold uppercase tracking-wide transition-all flex items-center justify-center gap-1.5 whitespace-nowrap overflow-hidden bg-stone-900 text-white hover:bg-[#D4AF37] hover:shadow-lg shadow-stone-200 font-serif tracking-widest"
           >
-            {isAdded ? (
-              <>
-                <Check size={14} className="md:w-4 md:h-4" /> <span className="truncate">Added</span>
-              </>
-            ) : (
-              <>
-                <ShoppingBag size={14} className="md:w-4 md:h-4" /> <span className="truncate">Add to Cart</span>
-              </>
-            )}
+            <Send size={14} className="md:w-4 md:h-4" /> <span className="truncate">Order Now</span>
           </button>
         </div>
       </div>

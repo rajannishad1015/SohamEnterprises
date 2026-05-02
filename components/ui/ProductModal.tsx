@@ -71,15 +71,9 @@ export function ProductModal({ product, isOpen, onClose, relatedProducts = [], o
   };
 
   const handleAddToCart = () => {
-      addToCart({
-          id: product.id || product.name,
-          name: displayName,
-          price: displayPrice,
-          image: displayImage,
-          category: displayCategory
-      });
-      setIsAdded(true);
-      setTimeout(() => setIsAdded(false), 2000);
+    const message = `Hi, I would like to order: ${displayName}. Please provide more details.`;
+    const whatsappUrl = `https://wa.me/919930282855?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
   };
 
   return (
@@ -272,18 +266,9 @@ export function ProductModal({ product, isOpen, onClose, relatedProducts = [], o
                 <div className="p-4 md:p-8 bg-white/50 backdrop-blur-sm border-t border-[#D4AF37]/10 flex flex-row md:flex-col gap-3 md:gap-3 shrink-0 relative z-20">
                     <button
                         onClick={handleAddToCart}
-                        disabled={isAdded}
                         className="flex-1 py-3.5 md:py-4 bg-[#FDFCF8] border border-[#1A3C2F]/10 text-[#1A3C2F] rounded-xl text-xs md:text-sm font-bold uppercase tracking-widest hover:bg-[#D4AF37]/10 hover:border-[#D4AF37]/30 transition-all flex items-center justify-center gap-2 active:scale-[0.98]"
                     >
-                            {isAdded ? (
-                                <>
-                                <Check size={16} className="text-green-600" /> <span className="hidden md:inline">Added to Cart</span><span className="md:hidden">Added</span>
-                                </>
-                            ) : (
-                                <>
-                                <ShoppingBag size={16} /> <span className="hidden md:inline">Add to Cart</span><span className="md:hidden">Add</span>
-                                </>
-                            )}
+                        <ShoppingBag size={16} /> <span className="hidden md:inline">Order Now</span><span className="md:hidden">Order</span>
                     </button>
                     <button
                         onClick={handleEnquire}
