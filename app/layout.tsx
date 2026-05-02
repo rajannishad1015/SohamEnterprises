@@ -25,8 +25,8 @@ const lato = Lato({
 export const metadata: Metadata = {
   metadataBase: new URL("https://sohamenterprises.vercel.app"),
   title: {
-    default: "Soham Enterprise | Premium Essential Oils & Natural Compounds",
-    template: "%s | Soham Enterprise"
+    default: "Soham Enterprises - Essential Oils Supplier",
+    template: "%s | Soham Enterprises"
   },
   description: "Global suppliers of high-quality essential oils, industrial chemicals, and natural extracts. Trusted quality for pharmaceutical and cosmetic industries.",
   keywords: ["Essential Oils", "Natural Extracts", "Industrial Chemicals", "Pharmaceutical Formulations", "Cosmetic Raw Materials", "Soham Enterprise", "Indian Essential Oil Suppliers"],
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     telephone: false,
   },
   openGraph: {
-    title: "Soham Enterprise | Premium Essential Oils & Natural Compounds",
+    title: "Soham Enterprises - Essential Oils Supplier",
     description: "Pure extracts and chemical compounds for global excellence.",
     url: "https://sohamenterprises.vercel.app",
     siteName: "Soham Enterprise",
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Soham Enterprise | Pure Natural Ingredients",
+    title: "Soham Enterprises - Essential Oils Supplier",
     description: "Global suppliers of premium essential oils and extracts.",
     images: ["/logo.png"],
   },

@@ -4,7 +4,7 @@ import { ProductSchema } from "@/components/seo/ProductSchema";
 import { products } from "@/lib/products";
 
 export const metadata: Metadata = {
-  title: "Premium Essential Oils & Catalog",
+  title: "Premium Essential Oils Catalog | Soham Enterprises",
   description: "Browse our expansive catalog of over 60+ natural extracts, industrial oils, and pharmaceutical grade compounds. Exporting global quality ingredients.",
   alternates: {
     canonical: "/products",
