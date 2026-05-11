@@ -26,30 +26,31 @@ const lato = Lato({
 export const metadata: Metadata = {
   metadataBase: new URL("https://sohamenterprises.vercel.app"),
   title: {
-    default: "Soham Enterprises - Essential Oils Supplier",
+    default: "Soham Enterprises - essential oil supplier",
     template: "%s | Soham Enterprises"
   },
+  applicationName: "Soham Enterprises",
   description: "Global suppliers of high-quality essential oils, industrial chemicals, and natural extracts. Trusted quality for pharmaceutical and cosmetic industries.",
-  keywords: ["Essential Oils", "Natural Extracts", "Industrial Chemicals", "Pharmaceutical Formulations", "Cosmetic Raw Materials", "Soham Enterprise", "Indian Essential Oil Suppliers"],
-  authors: [{ name: "Soham Enterprise" }],
-  creator: "Soham Enterprise",
-  publisher: "Soham Enterprise",
+  keywords: ["Essential Oils", "Natural Extracts", "Industrial Chemicals", "Pharmaceutical Formulations", "Cosmetic Raw Materials", "Soham Enterprises", "Indian Essential Oil Suppliers"],
+  authors: [{ name: "Soham Enterprises" }],
+  creator: "Soham Enterprises",
+  publisher: "Soham Enterprises",
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
   openGraph: {
-    title: "Soham Enterprises - Essential Oils Supplier",
+    title: "Soham Enterprises - essential oil supplier",
     description: "Pure extracts and chemical compounds for global excellence.",
     url: "https://sohamenterprises.vercel.app",
-    siteName: "Soham Enterprise",
+    siteName: "Soham Enterprises",
     images: [
       {
         url: "/logo.png",
         width: 1200,
         height: 630,
-        alt: "Soham Enterprise Logo",
+        alt: "Soham Enterprises Logo",
       }
     ],
     locale: "en_US",
@@ -57,7 +58,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Soham Enterprises - Essential Oils Supplier",
+    title: "Soham Enterprises - essential oil supplier",
     description: "Global suppliers of premium essential oils and extracts.",
     images: ["/logo.png"],
   },

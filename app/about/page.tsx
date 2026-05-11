@@ -86,10 +86,10 @@ export default function AboutPage() {
               <div className="h-[1px] w-16 bg-gradient-to-l from-transparent to-[#d4af37]" />
             </div>
 
-            <p className="text-[#d4af37] text-xs md:text-sm tracking-[0.3em] uppercase mb-4 md:mb-6">Est. 1998 • Gujarat, India</p>
+            <p className="text-[#d4af37] text-xs md:text-sm tracking-[0.3em] uppercase mb-4 md:mb-6">Est. 2014 • Gujarat, India</p>
             <h1 className="text-4xl md:text-8xl font-serif text-white mb-6 md:mb-8 leading-tight">
               Crafting Purity<br />
-              <span className="text-[#d4af37]">Since 1998</span>
+              <span className="text-[#d4af37]">Since 2014</span>
             </h1>
             <p className="text-base md:text-xl text-white/80 max-w-2xl mx-auto font-light leading-relaxed">
               From the heart of Gujarat to the world, we distill nature's finest essences with unwavering commitment to quality.
@@ -134,7 +134,7 @@ export default function AboutPage() {
               <h2 className="text-3xl md:text-5xl font-serif text-[#1a3c2f] mb-6 md:mb-8">Our Story</h2>
               <div className="space-y-4 md:space-y-6 text-base md:text-lg text-gray-700 leading-relaxed">
                 <p>
-                  Founded in 1998, Soham Enterprise began with a simple vision: to bring the purest essential oils from India to the world. What started as a small family operation has grown into a trusted name in the industry.
+                  Founded in 2014, Soham Enterprise began with a simple vision: to bring the purest essential oils from India to the world. What started as a small family operation has grown into a trusted name in the industry.
                 </p>
                 <p>
                   Every drop we produce carries the legacy of traditional Indian wisdom combined with modern scientific precision. Our commitment to purity is not just a promise—it's our heritage.
@@ -241,7 +241,7 @@ export default function AboutPage() {
         <div className="container mx-auto max-w-6xl relative z-10">
           <div className="flex flex-row justify-between md:grid md:grid-cols-3 gap-2 md:gap-16 text-center">
             {[
-              { num: "25+", label: "Years of Excellence" },
+              { num: "10+", label: "Years of Excellence" },
               { num: "15+", label: "Countries Served" },
               { num: "100%", label: "Pure & Natural" }
             ].map((stat, idx) => (

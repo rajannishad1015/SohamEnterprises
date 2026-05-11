@@ -9,7 +9,7 @@ export default function Home() {
     <main className="min-h-screen">
       <LocalBusinessJsonLd
         type="Store"
-        name="Soham Enterprise"
+        name="Soham Enterprises"
         description="Premium global suppliers of essential oils, natural extracts, and industrial chemical compounds."
         url="https://sohamenterprises.vercel.app"
         telephone="+919930996570"

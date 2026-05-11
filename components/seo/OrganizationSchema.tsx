@@ -5,7 +5,7 @@ export const OrganizationSchema = () => {
   return (
     <OrganizationJsonLd
       type="Organization"
-      name="Soham Enterprise"
+      name="Soham Enterprises"
       url="https://sohamenterprises.vercel.app"
       logo="https://sohamenterprises.vercel.app/logo.png"
       sameAs={[

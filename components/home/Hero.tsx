@@ -23,7 +23,7 @@ export function Hero() {
           >
             <div className="h-[2px] w-12 bg-secondary" />
             <span className="text-secondary font-bold uppercase tracking-[0.2em] text-xs">
-              Est. 2024
+              Est. 2014
             </span>
           </motion.div>
 
@@ -166,7 +166,7 @@ export function Hero() {
           <div className="max-w-6xl mx-auto px-6">
               <div className="grid grid-cols-3 md:flex md:justify-center md:items-center gap-4 md:gap-12 xl:gap-24 text-center md:divide-x divide-[#1A3C2F]/10">
                   <div className="px-2 md:px-8 first:pl-0">
-                      <p className="text-xl md:text-2xl font-serif font-bold mb-0.5">1998</p>
+                      <p className="text-xl md:text-2xl font-serif font-bold mb-0.5">2014</p>
                       <p className="text-[8px] md:text-[10px] uppercase tracking-widest opacity-80 font-semibold">Established</p>
                   </div>
                   <div className="px-2 md:px-8 border-l border-[#1A3C2F]/10 md:border-l-0">
