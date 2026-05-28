@@ -74,6 +74,7 @@ export function Footer() {
                                 <li><Link href="/products" className="hover:text-[#d4af37] hover:pl-2 transition-all duration-300 block">Our Collection</Link></li>
                                 <li><Link href="#" className="hover:text-[#d4af37] hover:pl-2 transition-all duration-300 block">Sourcing</Link></li>
                                 <li><Link href="/about" className="hover:text-[#d4af37] hover:pl-2 transition-all duration-300 block">Our Story</Link></li>
+                                <li><Link href="/blog" className="hover:text-[#d4af37] hover:pl-2 transition-all duration-300 block">Blog</Link></li>
                             </ul>
                         </div>
                         <div className="col-span-1">
