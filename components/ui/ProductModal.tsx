@@ -66,7 +66,7 @@ export function ProductModal({ product, isOpen, onClose, relatedProducts = [], o
 
   const handleWhatsAppShare = () => {
      const url = window.location.href;
-     const text = `Check out ${displayName} at Soham Enterprise: ${url}`;
+     const text = `Check out ${displayName} at Soham Enterprises: ${url}`;
      window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
   };
 

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 import { ShoppingBag, Menu, X, ArrowRight, Search, Instagram, Facebook, Phone, Flower2 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -53,8 +54,8 @@ export function Navbar() {
                whileHover={{ scale: 1.05 }}
                className="flex items-center gap-3"
             >
-               <img src="/logo.png" alt="Soham Enterprise" className="h-10 w-auto" />
-               <span className="text-sm md:text-xl font-serif font-bold text-primary tracking-tight">Soham Enterprise</span>
+               <Image src="/logo.png" alt="Soham Enterprises Mumbai" width={40} height={40} className="h-10 w-auto" priority />
+               <span className="text-sm md:text-xl font-serif font-bold text-primary tracking-tight">Soham Enterprises</span>
             </motion.div>
           </Link>
 

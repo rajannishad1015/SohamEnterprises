@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { useState } from "react";
+import Image from "next/image";
 import { ProductModal } from "@/components/ui/ProductModal";
 import Link from "next/link";
 import { products } from "@/lib/products";
@@ -74,11 +75,15 @@ export function FeaturedProducts() {
                 >
                     {/* Image Container */}
                     <div className="relative aspect-[3/4] overflow-hidden bg-[#F5F5F0] mb-4 md:mb-6">
-                        <img 
-                            src={product.image} 
-                            alt={product.name} 
-                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                        />
+                        {product.image && (
+                          <Image 
+                              src={product.image} 
+                              alt={`Pure ${product.name} Essential Oil - Wholesale Mumbai, Soham Enterprises`} 
+                              fill
+                              sizes="(max-width: 768px) 50vw, 25vw"
+                              className="object-cover transition-transform duration-700 group-hover:scale-105"
+                          />
+                        )}
                         {/* Overlay on Hover */}
                         <div className="absolute inset-0 bg-[#1A3C2F]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                         

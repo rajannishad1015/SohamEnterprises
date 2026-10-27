@@ -171,7 +171,7 @@ export function Benefits() {
         >
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8">
                 {[
-                    { label: "Years Exp.", value: "25+" },
+                    { label: "Years Exp.", value: "10+" },
                     { label: "Products", value: "100+" },
                     { label: "Global Reach", value: "15+" },
                     { label: "Partners", value: "500+" }

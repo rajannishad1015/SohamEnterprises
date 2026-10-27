@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Facebook, Instagram, Twitter, ArrowUp, MapPin, Mail, Phone, ExternalLink } from "lucide-react";
 import { MandalaIcon } from "../ui/MandalaIcon";
 
@@ -34,11 +35,11 @@ export function Footer() {
                     <div className="mb-10 lg:mb-12">
                         <div className="flex items-center gap-3 mb-6">
                              <div className="relative w-10 h-10 lg:w-16 lg:h-16 flex-shrink-0">
-                                <img src="/logo.png" alt="Soham Logo" className="w-full h-full object-contain drop-shadow-[0_0_15px_rgba(217,56,30,0.3)]" />
+                                <Image src="/logo.png" alt="Soham Enterprises Mumbai" fill className="object-contain drop-shadow-[0_0_15px_rgba(217,56,30,0.3)]" sizes="(max-width: 768px) 40px, 64px" />
                              </div>
                              <div>
-                                <h3 className="text-lg lg:text-xl font-bold uppercase tracking-[0.2em] text-white">Soham Enterprise</h3>
-                                <p className="text-[9px] lg:text-[10px] text-white/50 uppercase tracking-widest">Est. 1999 • Mumbai, India</p>
+                                <h3 className="text-lg lg:text-xl font-bold uppercase tracking-[0.2em] text-white">Soham Enterprises</h3>
+                                <p className="text-[9px] lg:text-[10px] text-white/50 uppercase tracking-widest">Est. 2014 • Mumbai, India</p>
                              </div>
                         </div>
                         <h2 className="text-3xl sm:text-3xl lg:text-5xl font-serif leading-tight mb-6 lg:mb-8 text-white max-w-xl">
@@ -115,7 +116,7 @@ export function Footer() {
 
                     {/* Footer Bottom */}
                     <div className="flex flex-col-reverse md:flex-row justify-between items-center md:items-end gap-6 pt-8 border-t border-white/5 text-center md:text-left">
-                        <p className="text-[10px] text-white/30 uppercase tracking-wider leading-relaxed">© {new Date().getFullYear()} Soham Enterprise. All rights reserved.</p>
+                        <p className="text-[10px] text-white/30 uppercase tracking-wider leading-relaxed">© {new Date().getFullYear()} Soham Enterprises. All rights reserved.</p>
                         <div className="flex items-center gap-4">
                             <SocialIcon icon={Instagram} />
                             <SocialIcon icon={Facebook} />
@@ -171,7 +172,7 @@ export function Footer() {
                                         <h4 className="text-sm lg:text-2xl font-serif text-white tracking-widest uppercase whitespace-nowrap">Mumbai HQ</h4>
                                         <MandalaIcon className="w-3 h-3 lg:w-4 lg:h-4 animate-spin-slow" />
                                     </div>
-                                    <p className="text-white/60 text-[9px] lg:text-xs uppercase tracking-[0.2em] mb-2 lg:mb-3 whitespace-nowrap">Zaveri Bazaar • Est. 1999</p>
+                                    <p className="text-white/60 text-[9px] lg:text-xs uppercase tracking-[0.2em] mb-2 lg:mb-3 whitespace-nowrap">Zaveri Bazaar • Est. 2014</p>
                                     
                                     <a 
                                         href="https://www.google.com/maps/place/2+floor,+Soham+Enterprises+-+essential+oil+supplier,+20%2F24,+Old+Hanuman+Ln,+near+k+m+chavan+talior,+Zaveri+Bazaar,+Kalbadevi,+Mumbai,+Maharashtra+400002/data=!4m2!3m1!1s0x3be7cf1fb4aa3371:0x3b4d4e141a6cbba9?utm_source=mstt_1&entry=gps&coh=192189&g_ep=CAESBzI1LjQ5LjYYACDXggMqbCw5NDI2NzcyNyw5NDI3NTQwNyw5NDI9OTUzMiw5NDI4MDU3Niw5NDIwNzUwNiw5NDIwODUwNiw5NDIxODY1Myw5NDIyOTgzOSw5NDI3NTE2OCw5NDI3OTYxOUICSU4%3D&skid=05829e14-a7ef-40dc-ab91-65225470c463&g_st=aw" 

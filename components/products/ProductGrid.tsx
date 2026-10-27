@@ -57,7 +57,7 @@ const ProductImage = ({ product }: { product: Product }) => {
           whileHover={{ scale: 1.1 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
           src={product.image}
-          alt={`Pure ${product.name} Essential Oil - Soham Enterprise`}
+          alt={`Pure ${product.name} Essential Oil - Soham Enterprises`}
           className="object-contain w-full h-full mix-blend-multiply"
           onError={() => setImageError(true)}
         />
@@ -354,6 +354,34 @@ export function ProductGrid() {
             </button>
         </motion.div>
 
+        {/* Category Silo Links for SEO and Buyer Convenience */}
+        <div className="flex flex-wrap items-center justify-center gap-2 mt-4 max-w-4xl mx-auto">
+          <Link
+            href="/products/category/essential-oils"
+            className="px-3.5 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-white/90 border border-stone-200 text-stone-700 hover:border-[#D4AF37] hover:text-[#1A3C2F] transition-all shadow-xs"
+          >
+            Pure Essential Oils
+          </Link>
+          <Link
+            href="/products/category/carrier-oils"
+            className="px-3.5 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-white/90 border border-stone-200 text-stone-700 hover:border-[#D4AF37] hover:text-[#1A3C2F] transition-all shadow-xs"
+          >
+            Cold-Pressed Carrier Oils
+          </Link>
+          <Link
+            href="/products/category/aroma-chemicals"
+            className="px-3.5 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-white/90 border border-stone-200 text-stone-700 hover:border-[#D4AF37] hover:text-[#1A3C2F] transition-all shadow-xs"
+          >
+            Aroma Chemicals
+          </Link>
+          <Link
+            href="/products/category/traditional-extracts"
+            className="px-3.5 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-white/90 border border-stone-200 text-stone-700 hover:border-[#D4AF37] hover:text-[#1A3C2F] transition-all shadow-xs"
+          >
+            Traditional Extracts
+          </Link>
+        </div>
+
         {/* Filter Panel */}
         <AnimatePresence>
             {isFilterOpen && (
@@ -447,7 +475,7 @@ export function ProductGrid() {
                                         transition={{ duration: 0.5 }}
                                         src={product.image} 
                                         className="w-full h-full object-contain mix-blend-multiply drop-shadow-sm"
-                                        alt={`Pure ${product.name} Essential Oil - Soham Enterprise`}
+                                        alt={`Pure ${product.name} Essential Oil - Soham Enterprises`}
                                    />
                                 ) : (
                                    <Leaf className="w-1/2 h-1/2 text-primary/20" />

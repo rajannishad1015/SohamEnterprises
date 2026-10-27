@@ -1,34 +1,34 @@
+import { Metadata } from "next";
 import { Hero } from "@/components/home/Hero";
 import { Benefits } from "@/components/home/Benefits";
 import { FeaturedProducts } from "@/components/home/FeaturedProducts";
 import { Contact } from "@/components/home/Contact";
-import { LocalBusinessJsonLd } from "next-seo";
+
+export const metadata: Metadata = {
+  title: "Pure Essential Oils Wholesale Supplier & Manufacturer Mumbai | Soham Enterprises",
+  description: "Buy 100% pure therapeutic grade essential oils, cold-pressed carrier oils, and natural extracts in bulk from Soham Enterprises, Kalbadevi, Mumbai. Same-day Mumbai dispatch & pan-India delivery.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Pure Essential Oils Wholesale Supplier & Manufacturer Mumbai | Soham Enterprises",
+    description: "Premium wholesale supplier of pure essential oils, carrier oils, and aroma chemicals in Mumbai. COA tested, bulk orders, and trade samples available.",
+    url: "/",
+    type: "website",
+    images: [
+      {
+        url: "/logo.png",
+        width: 1200,
+        height: 630,
+        alt: "Soham Enterprises Mumbai - Essential Oils Wholesale",
+      },
+    ],
+  },
+};
 
 export default function Home() {
   return (
     <main className="min-h-screen">
-      <LocalBusinessJsonLd
-        type="Store"
-        name="Soham Enterprises"
-        description="Premium global suppliers of essential oils, natural extracts, and industrial chemical compounds."
-        url="https://sohamenterprises.vercel.app"
-        telephone="+919930996570"
-        address={{
-          streetAddress: '2 floor, 20/24, Old Hanuman Ln, near k m chavan talior, Zaveri Bazaar, Kalbadevi',
-          addressLocality: 'Mumbai',
-          addressRegion: 'Maharashtra',
-          postalCode: '400002',
-          addressCountry: 'IN',
-        }}
-        geo={{
-          latitude: 18.948604,
-          longitude: 72.828613,
-        }}
-        image={[
-          'https://sohamenterprises.vercel.app/logo.png',
-          'https://sohamenterprises.vercel.app/hero-bg.png'
-        ]}
-      />
       <Hero />
       <FeaturedProducts />
       <Benefits />

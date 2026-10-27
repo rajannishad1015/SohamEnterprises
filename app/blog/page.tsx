@@ -3,6 +3,7 @@
 import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { Search, Calendar, Clock, ArrowRight, BookOpen, Sparkles, User } from "lucide-react";
 import { blogPosts, BlogPost } from "@/lib/blogData";
 import { MandalaIcon } from "@/components/ui/MandalaIcon";
@@ -175,10 +176,13 @@ export default function BlogIndexPage() {
                     <div className="bg-white border border-gray-100 rounded-none overflow-hidden shadow-md hover:shadow-xl hover:border-secondary/30 transition-all duration-500 grid grid-cols-1 lg:grid-cols-12 min-h-[500px]">
                       {/* Featured Image */}
                       <div className="lg:col-span-7 relative min-h-[300px] lg:min-h-full overflow-hidden">
-                        <img
+                        <Image
                           src={featuredPost.mainImage}
                           alt={featuredPost.title}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-all duration-700 ease-[cubic-bezier(0.25,0.1,0.25,1)]"
+                          fill
+                          priority
+                          sizes="(max-width: 1024px) 100vw, 60vw"
+                          className="object-cover group-hover:scale-105 transition-all duration-700 ease-[cubic-bezier(0.25,0.1,0.25,1)]"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
                         
@@ -262,10 +266,12 @@ export default function BlogIndexPage() {
                             <div>
                               {/* Image */}
                               <div className="relative h-56 w-full overflow-hidden">
-                                <img
+                                <Image
                                   src={post.mainImage}
                                   alt={post.title}
-                                  className="w-full h-full object-cover group-hover:scale-105 transition-all duration-700 ease-[cubic-bezier(0.25,0.1,0.25,1)]"
+                                  fill
+                                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                  className="object-cover group-hover:scale-105 transition-all duration-700 ease-[cubic-bezier(0.25,0.1,0.25,1)]"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent pointer-events-none" />
                                 <span className="absolute top-4 left-4 bg-primary text-white font-bold text-[8px] uppercase tracking-widest px-3 py-1.5 border border-secondary/20 shadow-sm">

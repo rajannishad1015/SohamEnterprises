@@ -32,9 +32,9 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.15 }}
-            className="mb-3 mt-12 text-primary font-medium tracking-wider text-lg lg:text-xl"
+            className="mb-3 mt-12 text-primary font-medium tracking-wider text-base lg:text-lg flex items-center gap-2"
           >
-            - Essential Oil Supplier
+            <span>Wholesale Essential Oil Supplier & Manufacturer in Mumbai</span>
           </motion.div>
 
           <motion.h1
@@ -44,7 +44,7 @@ export function Hero() {
             className="text-4xl md:text-5xl lg:text-7xl font-serif font-bold text-primary mb-6 leading-[1.1]"
           >
             Pure Essential Oils <br />
-            <span className="italic font-light text-primary/80">Distilled.</span>
+            <span className="italic font-light text-primary/80">& Natural Extracts.</span>
           </motion.h1>
 
           <motion.p
@@ -53,8 +53,7 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-base md:text-lg text-muted-foreground mb-8 leading-relaxed max-w-lg"
           >
-            Experience the profound healing power of 100% organic essential oils. 
-            Ethically sourced from the world's most pristine environments.
+            Source 100% pure, lab-tested essential oils, carrier oils, and natural aromatic compounds in bulk. Certified quality with same-day Mumbai delivery and pan-India shipping.
           </motion.p>
 
           <motion.div
@@ -107,7 +106,7 @@ export function Hero() {
         >
             <Image
                 src="/hero-bg.png"
-                alt="Soham Enterprise Premium Essential Oils - Organic Distillery"
+                alt="Soham Enterprises Premium Essential Oils - Organic Distillery"
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover"

@@ -251,6 +251,18 @@ export const products: Product[] = [
         tags: ["Calming", "Sleep Inducing", "Universal Oil", "Skin Soothing"]
     },
     { 
+        name: "Lemon Oil",  
+        image: "/images/products/lemon-oil.jpg",
+        description: "A bright, invigorating citrus oil known for its purifying and mood-elevating properties. Widely used for immune support, natural cleansing, and refreshing aromatherapy formulations.",
+        tags: ["Purifying", "Citrus", "Uplifting", "Antioxidant", "Natural Cleanser"]
+    },
+    { 
+        name: "Lemongrass Oil",  
+        image: "/images/products/lemongrass-oil.jpg",
+        description: "A crisp, revitalizing herbaceous oil renowned for its antibacterial, anti-inflammatory, and deodorizing properties. Ideal for wellness diffusions, insect repelling, and soothing tired muscles.",
+        tags: ["Revitalizing", "Deodorizing", "Antibacterial", "Aromatherapy", "Wellness"]
+    },
+    { 
         name: "Menthol Crystal",  
         image: "/images/products/menthol-crystal.jpg",
         description: "High-purity Menthol crystals providing an intense, long-lasting cooling sensation. Widely used as an active ingredient in topical analgesics, decongestants, and refreshing oral care products.",

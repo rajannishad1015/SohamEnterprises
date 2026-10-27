@@ -14,17 +14,47 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   
   if (!post) {
     return {
-      title: "Article Not Found",
+      title: "Article Not Found | Soham Enterprises",
     };
   }
 
+  const title = `${post.title} | Soham Enterprises`;
+  const description = post.excerpt;
+
   return {
-    title: `${post.title} | Soham Enterprises`,
-    description: post.excerpt,
+    title,
+    description,
+    keywords: [
+      post.title,
+      post.category,
+      "Essential Oils Mumbai",
+      "Essential Oil Wholesale India",
+      "Soham Enterprises Blog"
+    ],
+    alternates: {
+      canonical: `/blog/${slug}`,
+    },
     openGraph: {
-      title: post.title,
-      description: post.excerpt,
-      images: [{ url: post.mainImage }],
+      title,
+      description,
+      url: `/blog/${slug}`,
+      type: "article",
+      publishedTime: post.date,
+      authors: [post.author.name],
+      images: [
+        {
+          url: post.mainImage,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [post.mainImage],
     },
   };
 }
@@ -44,6 +74,60 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     );
   }
 
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://sohamenterprises.vercel.app";
+
+  const blogSchema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": post.title,
+    "description": post.excerpt,
+    "image": post.mainImage.startsWith("http") ? post.mainImage : `${baseUrl}${post.mainImage}`,
+    "datePublished": post.date,
+    "dateModified": post.date,
+    "author": {
+      "@type": "Person",
+      "name": post.author.name,
+      "jobTitle": post.author.role
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Soham Enterprises",
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${baseUrl}/logo.png`
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `${baseUrl}/blog/${post.slug}`
+    }
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": baseUrl
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": `${baseUrl}/blog`
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": post.title,
+        "item": `${baseUrl}/blog/${post.slug}`
+      }
+    ]
+  };
+
   // Recommended Articles
   const recommendedPosts = blogPosts
     .filter((p) => p.id !== post.id)
@@ -54,5 +138,17 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     })
     .slice(0, 3);
 
-  return <BlogPostClient post={post} recommendedPosts={recommendedPosts} />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <BlogPostClient post={post} recommendedPosts={recommendedPosts} />
+    </>
+  );
 }

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useRef, useEffect } from "react";
+import Image from "next/image";
 
 export default function AboutPage() {
   const valuesScrollRef = useRef<HTMLDivElement>(null);
@@ -64,10 +65,12 @@ export default function AboutPage() {
         </div>
         
         <div className="absolute inset-0 opacity-20">
-          <img 
+          <Image 
             src="https://images.unsplash.com/photo-1541595180-b2dd99318a47?q=80&w=1965&auto=format&fit=crop" 
-            alt="Nature" 
-            className="w-full h-full object-cover"
+            alt="Natural botanical farm sources for pure essential oils - Soham Enterprises" 
+            fill
+            priority
+            className="object-cover"
           />
         </div>
         
@@ -86,13 +89,13 @@ export default function AboutPage() {
               <div className="h-[1px] w-16 bg-gradient-to-l from-transparent to-[#d4af37]" />
             </div>
 
-            <p className="text-[#d4af37] text-xs md:text-sm tracking-[0.3em] uppercase mb-4 md:mb-6">Est. 2014 • Gujarat, India</p>
+            <p className="text-[#d4af37] text-xs md:text-sm tracking-[0.3em] uppercase mb-4 md:mb-6">Est. 2014 • Mumbai, India</p>
             <h1 className="text-4xl md:text-8xl font-serif text-white mb-6 md:mb-8 leading-tight">
               Crafting Purity<br />
               <span className="text-[#d4af37]">Since 2014</span>
             </h1>
             <p className="text-base md:text-xl text-white/80 max-w-2xl mx-auto font-light leading-relaxed">
-              From the heart of Gujarat to the world, we distill nature's finest essences with unwavering commitment to quality.
+              From the heart of Mumbai to the world, we distill nature's finest essences with unwavering commitment to quality.
             </p>
 
             {/* Decorative Bottom */}
@@ -134,10 +137,13 @@ export default function AboutPage() {
               <h2 className="text-3xl md:text-5xl font-serif text-[#1a3c2f] mb-6 md:mb-8">Our Story</h2>
               <div className="space-y-4 md:space-y-6 text-base md:text-lg text-gray-700 leading-relaxed">
                 <p>
-                  Founded in 2014, Soham Enterprise began with a simple vision: to bring the purest essential oils from India to the world. What started as a small family operation has grown into a trusted name in the industry.
+                  At Soham Enterprises, we provide a carefully chosen range of high-quality essential oils that have been carefully chosen for their effectiveness and purity. In addition to unique mixes created for relaxation, wellness, and medical use, our selection includes well-known classics like lemon grass oil and lavender and many more.
                 </p>
                 <p>
-                  Every drop we produce carries the legacy of traditional Indian wisdom combined with modern scientific precision. Our commitment to purity is not just a promise—it's our heritage.
+                  We make sure every oil undergoes thorough quality testing because we are committed to environment. Regardless of your level of experience with essential oils, our knowledgeable advice and premium goods will help you on your path to wellbeing.
+                </p>
+                <p>
+                  Join us as we explore the magic of essential oils, where success and purity combine to create a more balanced, better way of life. Come see us in person or visit us now!
                 </p>
               </div>
             </motion.div>
@@ -153,10 +159,12 @@ export default function AboutPage() {
               <div className="absolute -inset-4 border-2 border-[#d4af37]/30 rounded-lg" />
               <div className="absolute -inset-2 border border-[#d4af37]/20 rounded-lg" />
               
-              <img 
+              <Image 
                 src="https://images.unsplash.com/photo-1595079676339-1534801fafde?q=80&w=2070&auto=format&fit=crop" 
-                alt="Distillation" 
-                className="w-full h-full object-cover rounded-lg shadow-2xl relative z-10"
+                alt="Traditional steam distillation and botanical oil purification - Soham Enterprises Mumbai" 
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover rounded-lg shadow-2xl relative z-10"
               />
             </motion.div>
           </div>
